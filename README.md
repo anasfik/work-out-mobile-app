@@ -63,6 +63,7 @@ It's a mobile application for both android and ios made for work out and fitness
 
 - Clean UI design
 - 60-30-10 color theory
+- fade in show animations
 - Native splash screen
 - Covering most necessary pages for user ( Login, Sign Up, Email Verification, Forgetting Password( Reset Password ),  Possibility to delete the account, Possibility to change personal information)
 - The app will remember user sign in even the app is restarted, until you sign out
