@@ -4,6 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:work_out/controller/functionsController.dart';
 import 'package:work_out/inAppData/text.dart';
+import 'package:work_out/view/screens/homepage/homePage.dart';
 
 import '../functionsController/dialogsAndLoadingController.dart';
 
@@ -18,7 +19,7 @@ class LoginController extends GetxController {
       Get.put(DialogsAndLoadingController());
 ////////
 
-// autheticate with firebase email/password method
+// authenticate with firebase email/password method
   loginWithAccount(String email, String password) async {
     bool isValidEmail = controller.emailRegExp.hasMatch(email);
     bool isValidPassword = password.length >= 5;
@@ -26,6 +27,10 @@ class LoginController extends GetxController {
       try {
         dialogsAndLoadingController.showLoading();
 
+        await FirebaseAuth.instance
+            .signInWithEmailAndPassword(email: email, password: password);
+
+        Get.off(HomePage());
       } on FirebaseAuthException catch (e) {
         Get.back();
         if (e.code == 'network-request-failed') {
