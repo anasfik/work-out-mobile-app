@@ -1,4 +1,6 @@
 # Work Out
+![GitHub commit activity](https://img.shields.io/github/commit-activity/m/anasfik/work-out-mobile-app)
+
 <p align="center">
 <img src="imgs/logo.png" alt="logo" width="150"/>
 
