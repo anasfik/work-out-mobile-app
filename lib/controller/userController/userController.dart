@@ -13,7 +13,7 @@ class UserInformationController extends GetxController {
   //variables
   late RxString username = "Anonym user".obs;
   RxString userProfileImg =
-      "https://firebasestorage.googleapis.com/v0/b/gwhyyworkout.appspot.com/o/assets%2F73-730477_first-name-profile-image-placeholder-png.png?alt=media&token=4a2f8037-38fb-4fb8-89c3-21a39ec2edb6"
+      "https://bellard.org/bpg/gallery2.html"
           .obs;
 
   // depen. inj

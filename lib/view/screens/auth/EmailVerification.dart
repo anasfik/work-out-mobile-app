@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:work_out/controller/authControllers/signOutController.dart';
 import 'package:work_out/controller/functionsController.dart';
 import 'package:work_out/inAppData/images%20sources.dart';
 import 'package:work_out/inAppData/text.dart';
@@ -13,6 +14,8 @@ class EmailVerificatioPage extends StatelessWidget {
   final FunctionsController controller = Get.put(FunctionsController());
   final EmailVerificatioController emailVerificatioController =
       Get.put(EmailVerificatioController());
+  final SignOutController signOutController = Get.put(SignOutController());
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,6 +28,12 @@ class EmailVerificatioPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             mainAxisSize: MainAxisSize.max,
             children: [
+              ElevatedButton(
+                onPressed: () {
+                  signOutController.signOut();
+                },
+                child: const Text("sign out test"),
+              ),
               const Spacer(),
               Container(
                 decoration: BoxDecoration(

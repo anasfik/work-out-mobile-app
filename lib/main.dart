@@ -5,10 +5,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:work_out/inAppData/Colors.dart';
 import 'package:work_out/inAppData/Themes/mainThemeFile.dart';
 import 'package:work_out/view/components/general%20componenets/customMaterialColor.dart';
-import 'package:work_out/view/screens/auth/CheckerIfUserIsLogin.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'controller/authControllers/authchangesListener.dart';
+import 'controller/authControllers/newAuthStateChangeListener.dart';
 import 'firebase_options.dart';
+import 'inAppData/routes.dart';
 
 void main() async {
   // init binding
@@ -25,15 +25,14 @@ void main() async {
     DeviceOrientation.portraitDown,
   ]);
 
-  runApp(WorkoutApp());
+  inject the auth changes listener controller
+  Get.put(NewAuthStateChangeListener(), permanent: true);
+
+  runApp(const WorkoutApp());
 }
 
 class WorkoutApp extends StatelessWidget {
-  WorkoutApp({Key? key}) : super(key: key);
-
-  // Dependency injection
-  final AuthChangesListener authListener =
-      Get.put(AuthChangesListener(), permanent: true);
+  const WorkoutApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +49,10 @@ class WorkoutApp extends StatelessWidget {
         primaryColor: AppColors.green,
       ),
       debugShowCheckedModeBanner: false,
-      home: const CheckerIfUserIsLogin(),
+      getPages: Routes.pages,
+
+      // this is optional, but recommended
+      initialRoute: "/",
     );
   }
 }
