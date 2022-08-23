@@ -17,6 +17,7 @@ class SignUpController extends GetxController {
   FunctionsController controller = FunctionsController();
   DialogsAndLoadingController dialogsAndLoadingController =
       Get.put(DialogsAndLoadingController());
+
 // variables
   User? user = FirebaseAuth.instance.currentUser;
   FieldValue thisMomentTime = FieldValue.serverTimestamp();
@@ -26,7 +27,9 @@ class SignUpController extends GetxController {
       profileImgPath, uid, isEmailVerified) async {
     await FirebaseFirestore.instance.collection("aboutUsers").doc(uid).set({
       "email": email,
-      "password": password,
+
+      
+      // "password": password,
       "username": username,
       "profileImgPath": profileImgPath,
       "uid": credential.user!.uid,
@@ -68,8 +71,8 @@ class SignUpController extends GetxController {
           dialogsAndLoadingController.showError(AppTexts.checkConnection);
         }
         if (e.code == 'weak-password') {
-          dialogsAndLoadingController.showError(
-              controller.capitalize(AppTexts.weakPassword));
+          dialogsAndLoadingController
+              .showError(controller.capitalize(AppTexts.weakPassword));
         } else if (e.code == 'email-already-in-use') {
           dialogsAndLoadingController
               .showError(controller.capitalize(AppTexts.emailAlreadyInUse));
@@ -79,16 +82,17 @@ class SignUpController extends GetxController {
       }
     }
     if (username == "" || email.isEmpty || password == "") {
-      dialogsAndLoadingController.showError(controller.capitalize(AppTexts.fillFields));
+      dialogsAndLoadingController
+          .showError(controller.capitalize(AppTexts.fillFields));
     } else if (!isAcceptedUsername) {
-      dialogsAndLoadingController.showError(
-          controller.capitalize(AppTexts.usernameMustBe5AtLeast));
+      dialogsAndLoadingController
+          .showError(controller.capitalize(AppTexts.usernameMustBe5AtLeast));
     } else if (!isValidEmail) {
       dialogsAndLoadingController
           .showError(controller.capitalize(AppTexts.invalidEmail));
     } else if (!isValidPassword) {
-      dialogsAndLoadingController.showError(
-          controller.capitalize(AppTexts.passwordMustBe5AtLeast));
+      dialogsAndLoadingController
+          .showError(controller.capitalize(AppTexts.passwordMustBe5AtLeast));
     }
   }
 

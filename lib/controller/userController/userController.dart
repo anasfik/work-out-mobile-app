@@ -13,7 +13,7 @@ class UserInformationController extends GetxController {
   //variables
   late RxString username = "Anonym user".obs;
   RxString userProfileImg =
-      "https://bellard.org/bpg/gallery2.html"
+      ""
           .obs;
 
   // depen. inj

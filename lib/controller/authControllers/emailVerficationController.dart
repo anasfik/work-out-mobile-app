@@ -22,6 +22,7 @@ class EmailVerificatioController extends GetxController {
 // send email verification
   sendVerificationEmail() async {
     if (user != null) {
+  
       await user!.sendEmailVerification();
     }
     Get.back();

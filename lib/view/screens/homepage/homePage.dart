@@ -179,20 +179,18 @@ class _HomePageState extends State<HomePage> {
                   height: 40,
                   child: DelayedDisplay(
                     delay: Duration(milliseconds: controller.delay + 400),
-                    child: Expanded(
-                      child: TabBar(
-                        labelColor: Colors.white,
-                        isScrollable: true,
-                        indicator: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          border: Border.all(
-                            color: Theme.of(context).primaryColor,
-                            width: 2,
-                          ),
+                    child: TabBar(
+                      labelColor: Colors.white,
+                      isScrollable: true,
+                      indicator: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        border: Border.all(
+                          color: Theme.of(context).primaryColor,
+                          width: 2,
                         ),
-                        controller: _tabx.workOutTabController,
-                        tabs: _tabx.workOutTabs,
                       ),
+                      controller: _tabx.workOutTabController,
+                      tabs: _tabx.workOutTabs,
                     ),
                   ),
                 ),

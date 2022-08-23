@@ -25,9 +25,10 @@ void main() async {
     DeviceOrientation.portraitDown,
   ]);
 
-  inject the auth changes listener controller
-  Get.put(NewAuthStateChangeListener(), permanent: true);
+  // inject the auth changes listener controller
+  Get.put<NewAuthStateChangeListener>(NewAuthStateChangeListener());
 
+//
   runApp(const WorkoutApp());
 }
 
