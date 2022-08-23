@@ -1,4 +1,3 @@
-
 import 'package:delayed_display/delayed_display.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -73,7 +72,8 @@ class _HomePageState extends State<HomePage> {
                           },
                           username: controller.capitalize(
                               userInformationController.username.value),
-                          profileImg: userInformationController.userProfileImg.value),
+                          profileImg:
+                              userInformationController.userProfileImg.value),
                     )),
                 const SizedBox(
                   height: 55,
@@ -131,7 +131,8 @@ class _HomePageState extends State<HomePage> {
                                       ),
                                       child: Text(
                                         AppTexts.cancel,
-                                        style: const TextStyle(color: Colors.red),
+                                        style:
+                                            const TextStyle(color: Colors.red),
                                       ),
                                     ),
                                     TextButton(
@@ -178,18 +179,20 @@ class _HomePageState extends State<HomePage> {
                   height: 40,
                   child: DelayedDisplay(
                     delay: Duration(milliseconds: controller.delay + 400),
-                    child: TabBar(
-                      labelColor: Colors.white,
-                      isScrollable: true,
-                      indicator: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        border: Border.all(
-                          color: Theme.of(context).primaryColor,
-                          width: 2,
+                    child: Expanded(
+                      child: TabBar(
+                        labelColor: Colors.white,
+                        isScrollable: true,
+                        indicator: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          border: Border.all(
+                            color: Theme.of(context).primaryColor,
+                            width: 2,
+                          ),
                         ),
+                        controller: _tabx.workOutTabController,
+                        tabs: _tabx.workOutTabs,
                       ),
-                      controller: _tabx.workOutTabController,
-                      tabs: _tabx.workOutTabs,
                     ),
                   ),
                 ),

@@ -30,7 +30,7 @@ class LoginController extends GetxController {
         await FirebaseAuth.instance
             .signInWithEmailAndPassword(email: email, password: password);
 
-        Get.off(HomePage());
+        Get.off(const HomePage());
       } on FirebaseAuthException catch (e) {
         Get.back();
         if (e.code == 'network-request-failed') {
