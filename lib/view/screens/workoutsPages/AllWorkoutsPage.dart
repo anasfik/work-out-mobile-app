@@ -5,6 +5,7 @@ import 'package:work_out/controller/functionsController.dart';
 import 'package:work_out/inAppData/Colors.dart';
 import 'package:work_out/inAppData/text.dart';
 import 'package:work_out/view/screens/homepage/componenets/avatar.dart';
+import '../../../controller/userController/userController.dart';
 import '../../../inAppData/workouts lists/workouts Lists.dart';
 import '../homepage/componenets/tabBarViewSections.dart';
 import '../user profile/userProfil.dart';
@@ -14,6 +15,7 @@ class AllWorkoutsPage extends StatelessWidget {
   AllWorkoutsPage({Key? key, this.dataList}) : super(key: key);
   List? dataList;
   final FunctionsController controller = Get.put(FunctionsController());
+  final userInformationController = Get.put(UserInformationController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,6 +35,7 @@ class AllWorkoutsPage extends StatelessWidget {
                     onProfileImgTap: () {
                       Get.to(() => const UserProfile());
                     },
+                    networkImage:userInformationController.userProfileImg.value,
                   ),
                 ),
               ),

@@ -40,7 +40,7 @@ class ProfileAndUsername extends StatelessWidget {
             ],
           ),
         ),
-        Avatar(onProfileImgTap: onProfileImgTap),
+        Avatar(onProfileImgTap: onProfileImgTap, networkImage: profileImg),
       ],
     );
   }

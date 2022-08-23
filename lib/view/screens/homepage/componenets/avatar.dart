@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:get/get.dart';
-import 'package:work_out/controller/userController/userController.dart';
 
 class Avatar extends StatelessWidget {
-   Avatar({
+  Avatar({
     Key? key,
     required this.onProfileImgTap,
+    required this.networkImage,
   }) : super(key: key);
 
-  final UserInformationController userInformationController =
-      Get.put(UserInformationController());
+  // final UserInformationController userInformationController =
+  //     Get.put(UserInformationController());
   final void Function()? onProfileImgTap;
-
+  String networkImage;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -24,30 +23,30 @@ class Avatar extends StatelessWidget {
         ),
         width: 50,
         height: 50,
-        child: Obx(
-          (() => Image(
-                image: NetworkImage(
-                    userInformationController.userProfileImg.value),
-                // fit: BoxFit.cover,
-                errorBuilder: (context, error, stackTracec) {
-                  return Text("e");
-                },
-                frameBuilder: (_, image, loadingBuilder, __) {
-                  if (loadingBuilder == null) {
-                    return SizedBox(
-                      height: 300,
-                      child: Center(
-                        child: SpinKitSpinningLines(
-                          color: Theme.of(context).primaryColor,
-                          duration: const Duration(seconds: 1),
-                          size: 40,
-                        ),
-                      ),
-                    );
-                  }
-                  return image;
-                },
-              )),
+        child: Image(
+          image: NetworkImage(networkImage),
+          fit: BoxFit.cover,
+          errorBuilder: (context, error, stackTrace) {
+            return Container(
+              color: Colors.red,
+            );
+          },
+          
+          frameBuilder: (_, image, loadingBuilder, __) {
+            if (loadingBuilder == null) {
+              return SizedBox(
+                height: 300,
+                child: Center(
+                  child: SpinKitSpinningLines(
+                    color: Theme.of(context).primaryColor,
+                    duration: const Duration(seconds: 1),
+                    size: 40,
+                  ),
+                ),
+              );
+            }
+            return image;
+          },
         ),
       ),
     );

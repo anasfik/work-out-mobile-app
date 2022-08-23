@@ -26,7 +26,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final FunctionsController controller = Get.put(FunctionsController());
   final UserInformationController userInformationController =
-      Get.put(UserInformationController(), permanent: true);
+      Get.put(UserInformationController());
   final CustomTabBarController _tabx = Get.put(CustomTabBarController());
 
   @override
@@ -63,18 +63,17 @@ class _HomePageState extends State<HomePage> {
                 const SizedBox(
                   height: 50,
                 ),
-                DelayedDisplay(
-                    delay: Duration(milliseconds: controller.delay),
-                    child: Obx(
-                      () => ProfileAndUsername(
-                          onProfileImgTap: () {
-                            Get.to(() => const UserProfile());
-                          },
-                          username: controller.capitalize(
-                              userInformationController.username.value),
-                          profileImg:
-                              userInformationController.userProfileImg.value),
-                    )),
+                Obx(
+                  () => ProfileAndUsername(
+                    onProfileImgTap: () {
+                      Get.to(() => const UserProfile());
+                    },
+                    username: controller.capitalize(
+                      userInformationController.username.value,
+                    ),
+                    profileImg: userInformationController.userProfileImg.value,
+                  ),
+                ),
                 const SizedBox(
                   height: 55,
                 ),

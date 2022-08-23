@@ -13,8 +13,7 @@ class UserInformationController extends GetxController {
   //variables
   late RxString username = "Anonym user".obs;
   RxString userProfileImg =
-      ""
-          .obs;
+      "https://www.pngall.com/wp-content/uploads/12/Avatar-Profile.png".obs;
 
   // depen. inj
   FunctionsController controller = Get.put(FunctionsController());
@@ -37,10 +36,13 @@ class UserInformationController extends GetxController {
         .get()
         .then((value) => value["profileImgPath"]);
 
-    if (newGettedPath != userProfileImg.value) {
+    if (newGettedPath != userProfileImg.value && newGettedPath != "") {
+      print(newGettedPath);
+      print(userProfileImg.value);
+
       userProfileImg.value = newGettedPath;
     } else {
-    //  print("no new profile img");
+      //  print("no new profile img");
     }
   }
 
@@ -65,7 +67,8 @@ class UserInformationController extends GetxController {
       return image;
     } else {
       dialogsAndLoadingController
-          .showError(controller.capitalize("operation canceled"));    }
+          .showError(controller.capitalize("operation canceled"));
+    }
   }
 
   updateProfile(XFile? image) async {
