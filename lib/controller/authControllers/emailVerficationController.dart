@@ -1,4 +1,3 @@
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
@@ -9,62 +8,85 @@ import 'package:work_out/view/screens/homepage/homePage.dart';
 import '../functionsController/dialogsAndLoadingController.dart';
 
 class EmailVerificatioController extends GetxController {
-  // variables
+  // variable
   User? user = FirebaseAuth.instance.currentUser;
-
 
   // depen. injection
   DialogsAndLoadingController dialogsAndLoadingController =
       Get.put(DialogsAndLoadingController());
   FunctionsController controller = Get.put(FunctionsController());
 
-// send email verification
+  // Send email verification
   sendVerificationEmail() async {
+    // Show loading dialog
+    dialogsAndLoadingController.showLoading();
+
+    // Send verification email
     if (user != null) {
-  
       await user!.sendEmailVerification();
     }
+
+    // Pop the loading
     Get.back();
+
+    // Show success dialog
+    dialogsAndLoadingController.showSuccess(
+      "Sent",
+    );
   }
 
-// check email if it s verified by user
+  // Check email if it s verified by user
   checkEmailVerified() async {
+    // show loading
     dialogsAndLoadingController.showLoading();
-// reload data under the hood to re-check of validity
+
+    // Reload data under the hood to re-check of validity
     await FirebaseAuth.instance.currentUser?.reload();
+
+    // Get & store new isVerified value
     bool? emailVerifiedAfterReload =
         FirebaseAuth.instance.currentUser?.emailVerified;
 
+    // check now
     if (emailVerifiedAfterReload == true) {
-      dialogsAndLoadingController.showLoading();
-
-// updating in firestore
+      // Updating in firestore
       await FirebaseFirestore.instance
           .collection("aboutUsers")
           .doc(user!.uid)
           .update({
         "verified": emailVerifiedAfterReload,
       });
+
+      // pop loading
+      // Get.back();
+
+      // Get.offAll(
+      //   () => const HomePage(),
+      // );
+
+    }
+
+    // Check if it's false
+    else if (user!.emailVerified) {
+      // Pop loading
       Get.back();
-      Get.offAll(
-        () => const HomePage(),
-      );
-    } else if (user!.emailVerified == false) {
-      Get.back();
+
+      // Show error to user
       dialogsAndLoadingController
           .showError(controller.capitalize(AppTexts.pleaseVerifyEmail));
     }
   }
 
   @override
-  void onInit() {
-    sendVerificationEmail();
+  void onInit() async {
+    // send verification email before page is loading
+    await user!.sendEmailVerification();
     super.onInit();
   }
 
   @override
   void onReady() {
-    dialogsAndLoadingController.showLoading();
+    // on page show show loading
     super.onReady();
   }
 }
