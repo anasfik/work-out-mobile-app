@@ -11,12 +11,15 @@ import 'controller/authControllers/authchangesListener.dart';
 import 'firebase_options.dart';
 
 void main() async {
-  
+  // init binding
   WidgetsFlutterBinding.ensureInitialized();
+
+  // init firebase
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
+  // set the orientation to portrait only (there is no need for landscape)
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
