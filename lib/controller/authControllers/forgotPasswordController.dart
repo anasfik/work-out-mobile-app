@@ -27,7 +27,7 @@ class ForgotPasswordController extends GetxController {
         // Show loading dialog
         dialogsAndLoadingController.showLoading();
 
-        // Send request
+        // Send request (no need to make independent instance)
         await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
 
         // On success pop the loading dialog
@@ -46,17 +46,17 @@ class ForgotPasswordController extends GetxController {
         if (e.code == "user-not-found") {
           dialogsAndLoadingController
               .showError(controller.capitalize(AppTexts.noUserText));
-        } 
+        }
         // here your checks
         else {
           dialogsAndLoadingController.showError("$e.message");
         }
       }
       // this is optional
-       catch (e) {
+      catch (e) {
         dialogsAndLoadingController.showError(e.toString());
       }
-    } 
+    }
     // email checks ()
     else if (email == "") {
       dialogsAndLoadingController
