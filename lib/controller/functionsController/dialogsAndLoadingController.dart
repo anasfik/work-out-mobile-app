@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:work_out/inAppData/Colors.dart';
 
 class DialogsAndLoadingController extends GetxController {
-  ////////////
+  // Loading dialog
   showLoading() {
     Get.defaultDialog(
       title: "",
@@ -17,21 +17,31 @@ class DialogsAndLoadingController extends GetxController {
     );
   }
 
-////////
+  // dialog with Confirm
   showConfirmWithActions(
-      String infoText, String actionButtonText, void Function()? function) {
+    String infoText,
+    String actionButtonText,
+    void Function()? function,
+  ) {
     Get.defaultDialog(
         title: "",
         backgroundColor: const Color(0xff131429),
         content: Column(
           children: [
-            const Icon(Icons.warning, color: Color(0xff40D876), size: 60),
+            const Icon(
+              Icons.warning,
+              color: Color(0xff40D876),
+              size: 60,
+            ),
             const SizedBox(height: 15),
             SizedBox(
               width: 200,
               child: Text(
                 infoText,
-                style: const TextStyle(color: Colors.white, fontSize: 15),
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 15,
+                ),
                 textAlign: TextAlign.center,
               ),
             ),
@@ -57,19 +67,27 @@ class DialogsAndLoadingController extends GetxController {
         ]);
   }
 
+  // Error dialog
   showError(String errorText) {
     Get.defaultDialog(
         title: "",
         backgroundColor: const Color(0xff131429),
         content: Column(
           children: [
-            const Icon(Icons.error, color: Colors.red, size: 60),
+            const Icon(
+              Icons.error,
+              color: Colors.red,
+              size: 60,
+            ),
             const SizedBox(height: 20),
             SizedBox(
               width: 200,
               child: Text(
                 errorText,
-                style: const TextStyle(color: Colors.white, fontSize: 20),
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                ),
                 textAlign: TextAlign.center,
               ),
             )
@@ -77,24 +95,32 @@ class DialogsAndLoadingController extends GetxController {
         ));
   }
 
-  //
+  // Success Dialog
   showSuccess(String successText) {
     Get.defaultDialog(
-        title: "",
-        backgroundColor: const Color(0xff131429),
-        content: Column(
-          children: [
-            const Icon(Icons.done, color: Color(0xff40D876), size: 60),
-            const SizedBox(height: 20),
-            SizedBox(
-              width: 200,
-              child: Text(
-                successText,
-                style: const TextStyle(color: Colors.white, fontSize: 20),
-                textAlign: TextAlign.center,
+      title: "",
+      backgroundColor: const Color(0xff131429),
+      content: Column(
+        children: [
+          const Icon(
+            Icons.done,
+            color: Color(0xff40D876),
+            size: 60,
+          ),
+          const SizedBox(height: 20),
+          SizedBox(
+            width: 200,
+            child: Text(
+              successText,
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 20,
               ),
-            )
-          ],
-        ));
+              textAlign: TextAlign.center,
+            ),
+          )
+        ],
+      ),
+    );
   }
 }
