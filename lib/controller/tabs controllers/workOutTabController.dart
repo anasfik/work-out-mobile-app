@@ -24,7 +24,7 @@ class CustomTabBarController extends GetxController
   }
 
   @override
-  void onClose() {
+  void onClose() { 
     // dispose
     workOutTabController.dispose();
     super.onClose();

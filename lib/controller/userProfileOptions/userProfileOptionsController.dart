@@ -43,6 +43,7 @@ class UserProfileOptionsController extends GetxController {
                       text: controller.capitalize("update"),
                       isOutlined: false,
                       onPressed: () {
+                        Get.back();
                         userInformationController
                             .updateUsername(newUserNameController.text.trim());
                       }),
@@ -129,6 +130,8 @@ class UserProfileOptionsController extends GetxController {
                         text: controller.capitalize("update"),
                         isOutlined: false,
                         onPressed: () async {
+                          Get.back();
+
                           await userInformationController
                               .updateEmail(newEmailController.text.trim());
                         }),
@@ -163,6 +166,7 @@ class UserProfileOptionsController extends GetxController {
                         text: controller.capitalize("update"),
                         isOutlined: false,
                         onPressed: () async {
+                          Get.back();
                           await userInformationController.updatePassword(
                               newPasswordController.text.trim());
                         }),
@@ -182,6 +186,7 @@ class UserProfileOptionsController extends GetxController {
               .capitalize("are you sure you want to delete your account ?"),
           controller.capitalize("delete"),
           () {
+            Get.back();
             userInformationController.deleteUser();
           },
         );
