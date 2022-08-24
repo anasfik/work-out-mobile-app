@@ -3,8 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:work_out/controller/functionsController.dart';
 import 'package:work_out/inAppData/text.dart';
-import 'package:work_out/view/screens/homepage/homePage.dart';
 
+import '../../view/screens/homepage/homePage.dart';
 import '../functionsController/dialogsAndLoadingController.dart';
 
 class EmailVerificatioController extends GetxController {
@@ -57,17 +57,12 @@ class EmailVerificatioController extends GetxController {
         "verified": emailVerifiedAfterReload,
       });
 
-      // pop loading
-      // Get.back();
-
-      // Get.offAll(
-      //   () => const HomePage(),
-      // );
-
+      // Go to homepage now
+      Get.offAll(const HomePage());
     }
 
     // Check if it's false
-    else if (user!.emailVerified) {
+    else if (emailVerifiedAfterReload == false) {
       // Pop loading
       Get.back();
 
@@ -84,9 +79,4 @@ class EmailVerificatioController extends GetxController {
     super.onInit();
   }
 
-  @override
-  void onReady() {
-    // on page show show loading
-    super.onReady();
-  }
 }
