@@ -7,29 +7,34 @@ import 'package:work_out/inAppData/text.dart';
 import 'package:work_out/view/screens/auth/EmailVerification.dart';
 import '../functionsController/dialogsAndLoadingController.dart';
 
-class SignUpController extends GetxController {
-  // input controllers
+class additional extends GetxController {
+  // Input controllers
   TextEditingController signUpUserController = TextEditingController();
   TextEditingController signUpEmailController = TextEditingController();
   TextEditingController signUpPasswordController = TextEditingController();
 
-  // depen. injection
+  // Depen. injection
   FunctionsController controller = FunctionsController();
   DialogsAndLoadingController dialogsAndLoadingController =
       Get.put(DialogsAndLoadingController());
 
-// variables
+  // Variables
+  // user instance,
   User? user = FirebaseAuth.instance.currentUser;
+
+  // Get moment time (in this case, get more info about user)
   FieldValue thisMomentTime = FieldValue.serverTimestamp();
 
-  // add aditional info to the firestore
+  // add additional info to the firestore
   addMoreInformationsToDatabase(credential, email, password, username,
       profileImgPath, uid, isEmailVerified) async {
+    // Add by uid
     await FirebaseFirestore.instance.collection("aboutUsers").doc(uid).set({
       "email": email,
 
-      
+      // there is no reason to get the password, for users privacy, don't store it in the database
       // "password": password,
+
       "username": username,
       "profileImgPath": profileImgPath,
       "uid": credential.user!.uid,
@@ -38,70 +43,115 @@ class SignUpController extends GetxController {
     });
   }
 
-// create new account
-  newAccount(String email, password, username) async {
-    // checker booleans(should stay here)
+  // Create new account
+  newAccount(String email, String password, String username) async {
+    // Check validations
     bool isValidEmail = controller.emailRegExp.hasMatch(email);
     bool isValidPassword = password.length > 4;
     bool isAcceptedUsername = username.length > 4;
 
+// first, if they are valid, then create it immediately
     if (isValidEmail && isValidPassword && isAcceptedUsername) {
       try {
+        // Show loading
         dialogsAndLoadingController.showLoading();
-        final credential =
+
+        // Create account method, store the credential
+        final UserCredential credential =
             await FirebaseAuth.instance.createUserWithEmailAndPassword(
           email: email,
           password: password,
         );
 
+        // Here we created acc with firebase auth, the email and password only,  to collect and use more data, we need to store it
         addMoreInformationsToDatabase(
           credential,
           email,
+
+          // There is no reason to get the password, for users privacy, don't store it in the database ( check the method)
           password,
+
           username,
-          // this is place of profileImgPath
+
+          // This is place of profileImgPath (set to "" so we can use the default one)
           "",
           credential.user!.uid,
           FirebaseAuth.instance.currentUser?.emailVerified,
         );
+
+        // On sign up, we should verify our user email (no need to unnecessary checks)
         Get.to(() => EmailVerificatioPage());
       } on FirebaseAuthException catch (e) {
+        // else, first pop
         Get.back();
+
+        // Error checks
         if (e.code == 'network-request-failed') {
-          dialogsAndLoadingController.showError(AppTexts.checkConnection);
+          dialogsAndLoadingController.showError(
+            controller.capitalize(
+              AppTexts.checkConnection,
+            ),
+          );
         }
         if (e.code == 'weak-password') {
-          dialogsAndLoadingController
-              .showError(controller.capitalize(AppTexts.weakPassword));
+          dialogsAndLoadingController.showError(
+            controller.capitalize(
+              AppTexts.weakPassword,
+            ),
+          );
         } else if (e.code == 'email-already-in-use') {
-          dialogsAndLoadingController
-              .showError(controller.capitalize(AppTexts.emailAlreadyInUse));
+          dialogsAndLoadingController.showError(
+            controller.capitalize(
+              AppTexts.emailAlreadyInUse,
+            ),
+          );
         }
-      } catch (e) {
-        // print(e);
+      }
+
+      //
+      catch (e) {
+        dialogsAndLoadingController.showError(
+          controller.capitalize(
+            e as String,
+          ),
+        );
       }
     }
+
+    // Now, if something is'nt valid, inform user about it
     if (username == "" || email.isEmpty || password == "") {
-      dialogsAndLoadingController
-          .showError(controller.capitalize(AppTexts.fillFields));
+      dialogsAndLoadingController.showError(
+        controller.capitalize(
+          AppTexts.fillFields,
+        ),
+      );
     } else if (!isAcceptedUsername) {
-      dialogsAndLoadingController
-          .showError(controller.capitalize(AppTexts.usernameMustBe5AtLeast));
+      dialogsAndLoadingController.showError(
+        controller.capitalize(
+          AppTexts.usernameMustBe5AtLeast,
+        ),
+      );
     } else if (!isValidEmail) {
-      dialogsAndLoadingController
-          .showError(controller.capitalize(AppTexts.invalidEmail));
+      dialogsAndLoadingController.showError(
+        controller.capitalize(
+          AppTexts.invalidEmail,
+        ),
+      );
     } else if (!isValidPassword) {
-      dialogsAndLoadingController
-          .showError(controller.capitalize(AppTexts.passwordMustBe5AtLeast));
+      dialogsAndLoadingController.showError(
+        controller.capitalize(
+          AppTexts.passwordMustBe5AtLeast,
+        ),
+      );
     }
   }
 
   @override
   void onClose() {
+    // Dispose the TextEditingControllers
     signUpPasswordController.dispose();
     signUpEmailController.dispose();
     signUpUserController.dispose();
-    // TODO: implement onClose
     super.onClose();
   }
 }

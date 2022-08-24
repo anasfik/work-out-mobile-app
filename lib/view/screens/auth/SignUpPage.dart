@@ -16,7 +16,7 @@ class SignUpPage extends StatelessWidget {
   SignUpPage({Key? key}) : super(key: key);
   //depend. injection
   final FunctionsController controller = Get.put(FunctionsController());
-  final SignUpController signUpController = Get.put(SignUpController());
+  final additional signUpController = Get.put(additional());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
