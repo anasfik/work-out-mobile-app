@@ -1,30 +1,30 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class DetailsTabController extends GetxController
     with GetSingleTickerProviderStateMixin {
-      //variables
-        late TabController detailsTabController;
+  // TabController
+  late TabController detailsTabController;
 
-      // tabs to show
+  // Tabs to show
   final List<Tab> detailsTabs = <Tab>[
     const Tab(text: "Description"),
     const Tab(text: "Reviews"),
     const Tab(text: 'Comments'),
   ];
 
-
   @override
   void onInit() {
-    super.onInit();
+    
+    // init on init hah
     detailsTabController =
         TabController(vsync: this, length: detailsTabs.length);
+    super.onInit();
   }
 
   @override
   void onClose() {
+    // dispose
     detailsTabController.dispose();
     super.onClose();
   }
