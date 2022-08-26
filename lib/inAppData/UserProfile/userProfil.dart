@@ -1,3 +1,5 @@
+
+// dummy profile stats
 class UserProfileStats {
      static List stats = [
     {

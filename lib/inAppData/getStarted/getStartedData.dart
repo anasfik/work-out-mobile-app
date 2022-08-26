@@ -1,4 +1,5 @@
 
+  // Get started card options
   List cardsList = [
     {
       "title": "inactive",

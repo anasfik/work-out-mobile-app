@@ -1,3 +1,5 @@
+
+// to-do: correct spells, search for more texts in app if I forget to add them here
 class AppTexts {
   static String error = "Error";
   static String firstMainWord = "hard";

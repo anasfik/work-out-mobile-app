@@ -1,3 +1,5 @@
+// Search filter options
+
 List filtersItemsFromFile = [
   {
     "isChecked": false,

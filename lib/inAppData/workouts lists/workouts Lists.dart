@@ -1,5 +1,6 @@
 
 class WorkoutsList {
+// Class responsible for showing workouts (To-do : turn it into API)
   static List allWorkoutsList = [
     {
       "workOutTitle": "Yoga exercises",
