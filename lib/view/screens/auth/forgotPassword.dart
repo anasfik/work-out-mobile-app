@@ -1,4 +1,3 @@
-
 import 'package:delayed_display/delayed_display.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -25,7 +24,7 @@ class ForgotPasswordPage extends StatelessWidget {
           Container(
             width: double.infinity,
             child: Image.asset(
-              ImgSrc.login,
+              ImgSrc().randomFromAssetsList(),
               fit: BoxFit.cover,
             ),
           ),
@@ -52,8 +51,7 @@ class ForgotPasswordPage extends StatelessWidget {
                     child: TitleWithDescription(
                       title: controller.capitalize(AppTexts.forgot),
                       description: controller.capitalize(
-                          AppTexts.forgotPasswordDesccription
-                              .toLowerCase()),
+                          AppTexts.forgotPasswordDesccription.toLowerCase()),
                     ),
                   ),
                   const SizedBox(height: 10),

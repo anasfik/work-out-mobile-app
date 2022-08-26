@@ -15,7 +15,6 @@ class GetStartedPage extends StatelessWidget {
   // depen. injection
   final FunctionsController controller = Get.put(FunctionsController());
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,7 +24,7 @@ class GetStartedPage extends StatelessWidget {
           SizedBox(
             width: double.infinity,
             child: Image.asset(
-              ImgSrc.getStarted,
+              ImgSrc().randomFromAssetsList(),
               fit: BoxFit.cover,
             ),
           ),
@@ -63,8 +62,7 @@ class GetStartedPage extends StatelessWidget {
                       direction: Axis.horizontal,
                       children: [
                         ...List.generate(
-                          
-                              cardsList.length,
+                          cardsList.length,
                           (i) => DelayedDisplay(
                             delay: Duration(
                                 milliseconds:

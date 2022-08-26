@@ -25,7 +25,7 @@ class SignUpPage extends StatelessWidget {
           SizedBox(
             width: double.infinity,
             child: Image.asset(
-              ImgSrc.login,
+              ImgSrc().randomFromAssetsList(),
               fit: BoxFit.cover,
             ),
           ),
@@ -36,8 +36,8 @@ class SignUpPage extends StatelessWidget {
                 begin: Alignment.bottomCenter,
                 end: Alignment.topCenter,
                 colors: [
-            AppColors.darkBlue,
-            AppColors.darkBlue.withOpacity(0.05),
+                  AppColors.darkBlue,
+                  AppColors.darkBlue.withOpacity(0.05),
                 ],
               ),
             ),
@@ -50,15 +50,15 @@ class SignUpPage extends StatelessWidget {
                   DelayedDisplay(
                     delay: Duration(milliseconds: controller.delay),
                     child: MainScreenTitle(
-                        mainWord: AppTexts.firstMainWord, secondaryWord: AppTexts.secondaryMainWord),
+                        mainWord: AppTexts.firstMainWord,
+                        secondaryWord: AppTexts.secondaryMainWord),
                   ),
                   const SizedBox(height: 120),
                   DelayedDisplay(
                     delay: Duration(milliseconds: controller.delay + 100),
                     child: TitleWithDescription(
                       title: controller.capitalize(AppTexts.signUp),
-                      description:
-                          AppTexts.signUpDescription,
+                      description: AppTexts.signUpDescription,
                     ),
                   ),
                   DelayedDisplay(
@@ -117,7 +117,8 @@ class SignUpPage extends StatelessWidget {
                                 : Get.back();
                           },
                           child: Text(
-                            controller.capitalize(AppTexts.alreadyHaveAnAccount),
+                            controller
+                                .capitalize(AppTexts.alreadyHaveAnAccount),
                             style: TextStyle(
                               fontSize: 14,
                               color: Theme.of(context).primaryColor,

@@ -27,7 +27,7 @@ class LoginPage extends StatelessWidget {
           SizedBox(
             width: double.infinity,
             child: Image.asset(
-              ImgSrc.login,
+               ImgSrc().randomFromAssetsList(),
               fit: BoxFit.cover,
             ),
           ),

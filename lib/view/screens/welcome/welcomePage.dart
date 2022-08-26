@@ -1,4 +1,3 @@
-
 import 'package:delayed_display/delayed_display.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -25,7 +24,7 @@ class WelcomePage extends StatelessWidget {
           SizedBox(
             width: double.infinity,
             child: Image.asset(
-              ImgSrc.welcome,
+              ImgSrc().randomFromAssetsList(),
               fit: BoxFit.cover,
             ),
           ),
