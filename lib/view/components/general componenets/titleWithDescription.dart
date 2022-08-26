@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 
 class TitleWithDescription extends StatelessWidget {
-  TitleWithDescription({
+  const TitleWithDescription({
     Key? key,
     required this.title,
     required this.description,
   }) : super(key: key);
-  String title;
-  String description;
+  final String title;
+  final String description;
+
   @override
   Widget build(BuildContext context) {
     return Align(
@@ -26,12 +27,13 @@ class TitleWithDescription extends StatelessWidget {
           ),
           children: [
             TextSpan(
-                text: description,
-                style: const TextStyle(
-                  letterSpacing: 0,
-                  fontSize: 14,
-                  color: Colors.white,
-                )),
+              text: description,
+              style: const TextStyle(
+                letterSpacing: 0,
+                fontSize: 14,
+                color: Colors.white,
+              ),
+            ),
           ],
         )),
       ),
