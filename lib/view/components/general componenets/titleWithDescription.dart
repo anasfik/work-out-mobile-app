@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class TitleWithDescription extends StatelessWidget {
   TitleWithDescription({
     Key? key,
@@ -19,20 +18,20 @@ class TitleWithDescription extends StatelessWidget {
             text: TextSpan(
           text: '$title \n',
           style: const TextStyle(
-                height: 1.4,
+            height: 1.4,
             letterSpacing: 1,
             fontSize: 45,
             fontWeight: FontWeight.bold,
+            color: Colors.white,
           ),
           children: [
             TextSpan(
-              text: description,
-              style: const TextStyle(
-                 letterSpacing: 0,
+                text: description,
+                style: const TextStyle(
+                  letterSpacing: 0,
                   fontSize: 14,
                   color: Colors.white,
-              )
-            ),
+                )),
           ],
         )),
       ),

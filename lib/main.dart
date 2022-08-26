@@ -1,3 +1,5 @@
+import 'package:device_preview/device_preview.dart';
+import 'package:flutter/foundation.dart';
 import "package:flutter/material.dart";
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -29,7 +31,12 @@ void main() async {
   Get.put<NewAuthStateChangeListener>(NewAuthStateChangeListener());
 
 //
-  runApp(const WorkoutApp());
+  runApp(
+    DevicePreview(
+      enabled: !kReleaseMode,
+      builder: (context) => const WorkoutApp(), // Wrap your app
+    ),
+  );
 }
 
 class WorkoutApp extends StatelessWidget {
@@ -38,6 +45,8 @@ class WorkoutApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      locale: DevicePreview.locale(context),
+
       defaultTransition: Transition.native,
       theme: ThemeData(
         textTheme: GoogleFonts.latoTextTheme(
