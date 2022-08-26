@@ -8,13 +8,16 @@ import 'package:work_out/view/components/general%20componenets/titleWithDescript
 import 'package:work_out/view/screens/Get%20started/GetStartedPage.dart';
 import 'package:work_out/view/screens/toggle%20laungage/chooseLaungagePage.dart';
 import '../../../controller/functionsController.dart';
+import '../../../inAppData/showDelayController.dart';
 import '../../components/general componenets/button.dart';
 import '../../components/general componenets/mainScreenTitle.dart';
 import '../auth/loginPage.dart';
 
 class WelcomePage extends StatelessWidget {
   WelcomePage({Key? key}) : super(key: key);
+
   final FunctionsController controller = Get.put(FunctionsController());
+  final delayHelper = DelayHelper();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,26 +37,39 @@ class WelcomePage extends StatelessWidget {
             child: Container(
               margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  const Spacer(),
+                  // Hard Element MainScreenTitle
                   DelayedDisplay(
-                      delay: Duration(milliseconds: controller.delay),
-                      child: MainScreenTitle(
-                          mainWord: AppTexts.firstMainWord,
-                          secondaryWord: AppTexts.secondaryMainWord)),
-                  const SizedBox(height: 150),
+                    delay: delayHelper.getDelayDuration(),
+                    child: MainScreenTitle(
+                      mainWord: AppTexts.firstMainWord,
+                      secondaryWord: AppTexts.secondaryMainWord,
+                    ),
+                  ),
+
+                  const Spacer(
+                    flex: 2,
+                  ),
+                  // Screen TitleWithDescription
                   DelayedDisplay(
-                    delay: Duration(milliseconds: controller.delay + 100),
+                    delay: delayHelper.getDelayDuration(),
                     child: TitleWithDescription(
                       title: controller.capitalize(AppTexts.welcome),
                       description: AppTexts.welcomeDescription,
                     ),
                   ),
-                  const SizedBox(height: 100),
+                  const Spacer(
+                    flex: 2,
+                  ),
+
+                  // Buttons, change Language text
                   Column(
                     children: [
+                      // Get Started button
                       DelayedDisplay(
-                        delay: Duration(milliseconds: controller.delay + 200),
+                        delay: delayHelper.getDelayDuration(),
                         child: CustomButton(
                           onPressed: () {
                             Get.to(GetStartedPage());
@@ -62,9 +78,12 @@ class WelcomePage extends StatelessWidget {
                           isOutlined: false,
                         ),
                       ),
-                      const SizedBox(height: 10),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      // Login Button
                       DelayedDisplay(
-                        delay: Duration(milliseconds: controller.delay + 300),
+                        delay: delayHelper.getDelayDuration(),
                         child: CustomButton(
                           onPressed: () {
                             Get.to(LoginPage());
@@ -73,15 +92,17 @@ class WelcomePage extends StatelessWidget {
                           isOutlined: true,
                         ),
                       ),
-                      const SizedBox(height: 40),
+                      const SizedBox(
+                        height: 30,
+                      ),
+                      // Change Language txt
                       Center(
                         child: GestureDetector(
                           onTap: () {
                             Get.to(ChooseLaungagePage());
                           },
                           child: DelayedDisplay(
-                            delay:
-                                Duration(milliseconds: controller.delay + 400),
+                            delay: delayHelper.getDelayDuration(),
                             child: Text(
                               AppTexts.changeLaungage,
                               style: TextStyle(
