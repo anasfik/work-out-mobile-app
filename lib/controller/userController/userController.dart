@@ -118,21 +118,37 @@ class UserInformationController extends GetxController {
   updateProfile(XFile? image) async {
     // Check if there is img
     bool isImgPickedFromDeviceOrCamera = image != null;
-    final Reference userProfileImg =
+
+    // FB storage reference
+    final Reference userProfileImgReference =
         storage.ref("usersProfileImgs/${_auth.currentUser!.uid}");
 
     late String imageDownloadURL;
     //
     if (isImgPickedFromDeviceOrCamera) {
       // set the file with image path
-      File file = File(image.path);
+      File imgFile = File(image.path);
 
       try {
         // Show loading
         dialogsAndLoadingController.showLoading();
 
         // Upload img to firebase storage
-        await userProfileImg.putFile(file);
+        await userProfileImgReference.putFile(imgFile);
+
+        // Get the download url of the img
+        imageDownloadURL = await userProfileImgReference.getDownloadURL();
+
+        // Update it in firestore
+        await _firestore
+            .collection("aboutUsers")
+            .doc(_auth.currentUser!.uid)
+            .update({
+          "profileImgPath": imageDownloadURL,
+        });
+
+        // update it in app
+        userProfileImg.value = imageDownloadURL;
 
         // pop loading
         Get.back();
@@ -143,17 +159,6 @@ class UserInformationController extends GetxController {
             "profile image updated successfully",
           ),
         );
-
-        // Get the download url of the img
-        imageDownloadURL = await userProfileImg.getDownloadURL();
-
-        // Update it in firestore
-        await _firestore
-            .collection("aboutUsers")
-            .doc(_auth.currentUser!.uid)
-            .update({
-          "profileImgPath": imageDownloadURL,
-        });
       } on firebasecore.FirebaseException catch (e) {
         // On Error, pop first loading
         Get.back();
@@ -301,23 +306,22 @@ class UserInformationController extends GetxController {
       // user will be sign out (returned to home screen), then be deleted from firebase auth
 
       /// Delete user from firestore (to-do)
-       
+
       // show success msg to user
       dialogsAndLoadingController
           .showSuccess(controller.capitalize("user deleted"));
     } on FirebaseException catch (e) {
-
       // pop loading
       Get.back();
 
 // Same as above updateEmail method
- if (e.code == 'requires-recent-login') {
+      if (e.code == 'requires-recent-login') {
         dialogsAndLoadingController.showConfirmWithActions(
             "due to safety reasons, you need a recent re-login to your account in order to get permission to change password",
             controller.capitalize("re-login"), () {
           _auth.signOut();
         });
-      } 
+      }
       // Other checks
       else if (e.code == 'weak-password') {
         dialogsAndLoadingController
