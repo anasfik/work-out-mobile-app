@@ -81,6 +81,11 @@ class LoginController extends GetxController {
     }
   }
 
+  showPassword(bool obscureText) {
+    obscureText = false;
+    update();
+  }
+
   @override
   void onInit() {
     // Inputs controllers declarations

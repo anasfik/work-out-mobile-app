@@ -2,6 +2,7 @@ import 'package:delayed_display/delayed_display.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:work_out/inAppData/images%20sources.dart';
+import 'package:work_out/inAppData/showDelayController.dart';
 import 'package:work_out/inAppData/text.dart';
 
 import '../../../controller/authControllers/loginController.dart';
@@ -19,6 +20,9 @@ class LoginPage extends StatelessWidget {
   //depen. injection
   final FunctionsController controller = Get.put(FunctionsController());
   final LoginController loginController = Get.put(LoginController());
+
+  //
+  final DelayHelper delayHelper = DelayHelper();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,7 +31,7 @@ class LoginPage extends StatelessWidget {
           SizedBox(
             width: double.infinity,
             child: Image.asset(
-               ImgSrc().randomFromAssetsList(),
+              ImgSrc().randomFromAssetsList(),
               fit: BoxFit.cover,
             ),
           ),
@@ -44,99 +48,120 @@ class LoginPage extends StatelessWidget {
               ),
             ),
             width: double.infinity,
-            child: Container(
-              margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  DelayedDisplay(
-                    delay: Duration(milliseconds: controller.delay),
-                    child: MainScreenTitle(
-                        mainWord: AppTexts.firstMainWord,
-                        secondaryWord: AppTexts.secondaryMainWord),
-                  ),
-                  const SizedBox(height: 120),
-                  DelayedDisplay(
-                    delay: Duration(milliseconds: controller.delay + 100),
-                    child: TitleWithDescription(
-                      title: controller.capitalize(AppTexts.signIn),
-                      description:
-                          AppTexts.loginDescription,
-                    ),
-                  ),
-                  DelayedDisplay(
-                    delay: Duration(milliseconds: controller.delay + 200),
-                    child: CustomTextField(
-                      keyboardType: TextInputType.emailAddress,
-                      controller: loginController.loginEmailController,
-                      label: controller.capitalize(AppTexts.email),
-                    ),
-                  ),
-                  DelayedDisplay(
-                    delay: Duration(milliseconds: controller.delay + 300),
-                    child: CustomTextField(
-                      keyboardType: TextInputType.visiblePassword,
-                      controller: loginController.loginPasswordController,
-                      label: controller.capitalize(AppTexts.password),
-                      obscureText: true,
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 15),
-                      child: DelayedDisplay(
-                        delay: Duration(milliseconds: controller.delay + 300),
-                        child: GestureDetector(
-                          onTap: () {
-                            Get.to(() => ForgotPasswordPage());
-                          },
-                          child: Text(
-                            controller.capitalize(
-                              AppTexts.forgetPassword,
+            child: SingleChildScrollView(
+              child: ConstrainedBox(
+                constraints: BoxConstraints(
+                  maxHeight: MediaQuery.of(context).size.height,
+                  maxWidth: MediaQuery.of(context).size.width,
+                ),
+                child: Container(
+                  margin:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      const Spacer(),
+                      DelayedDisplay(
+                        delay: Duration(milliseconds: controller.delay),
+                        child: MainScreenTitle(
+                            mainWord: AppTexts.firstMainWord,
+                            secondaryWord: AppTexts.secondaryMainWord),
+                      ),
+                      const Spacer(
+                        flex: 3,
+                      ),
+                      DelayedDisplay(
+                        delay: delayHelper.getDelayDuration(),
+                        child: TitleWithDescription(
+                          title: controller.capitalize(AppTexts.signIn),
+                          description: AppTexts.loginDescription,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      DelayedDisplay(
+                        delay: delayHelper.getDelayDuration(),
+                        child: CustomTextField(
+                          keyboardType: TextInputType.emailAddress,
+                          controller: loginController.loginEmailController,
+                          label: controller.capitalize(AppTexts.email),
+                        ),
+                      ),
+                      DelayedDisplay(
+                        delay: delayHelper.getDelayDuration(),
+                        child: CustomTextField(
+                          keyboardType: TextInputType.visiblePassword,
+                          controller: loginController.loginPasswordController,
+                          label: controller.capitalize(AppTexts.password),
+                          obscureText: true,
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 15),
+                          child: DelayedDisplay(
+                            delay: delayHelper.getDelayDuration(),
+                            child: GestureDetector(
+                              onTap: () {
+                                Get.to(() => ForgotPasswordPage());
+                              },
+                              child: Text(
+                                controller.capitalize(
+                                  AppTexts.forgetPassword,
+                                ),
+                                style: const TextStyle(
+                                    color: Colors.white,
+                                    decoration: TextDecoration.underline),
+                              ),
                             ),
-                            style: const TextStyle(
-                                color: Colors.white,
-                                decoration: TextDecoration.underline),
                           ),
                         ),
                       ),
-                    ),
-                  ),
-                  const SizedBox(height: 40),
-                  Column(
-                    children: [
-                      DelayedDisplay(
-                        delay: Duration(milliseconds: controller.delay + 400),
-                        child: CustomButton(
-                          onPressed: () {
-                            loginController.loginWithAccount(
-                              loginController.loginEmailController.text.trim(),
-                              loginController.loginPasswordController.text
-                                  .trim(),
-                            );
-                          },
-                          isRounded: false,
-                          text: controller.capitalize(AppTexts.login),
-                          isOutlined: false,
-                        ),
+                      const Spacer(
+                        flex: 1,
                       ),
-                      const SizedBox(height: 10),
-                      DelayedDisplay(
-                        delay: Duration(milliseconds: controller.delay + 500),
-                        child: CustomButton(
-                          onPressed: () {
-                            Get.to(() => SignUpPage());
-                          },
-                          isRounded: false,
-                          text: controller.capitalize(AppTexts.signUp),
-                          isOutlined: true,
-                        ),
-                      ),
-                      const SizedBox(height: 40),
+                      Column(
+                        children: [
+                          DelayedDisplay(
+                            delay: delayHelper.getDelayDuration(),
+                            child: CustomButton(
+                              onPressed: () {
+                                loginController.loginWithAccount(
+                                  loginController.loginEmailController.text
+                                      .trim(),
+                                  loginController.loginPasswordController.text
+                                      .trim(),
+                                );
+                              },
+                              isRounded: false,
+                              text: controller.capitalize(AppTexts.login),
+                              isOutlined: false,
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          DelayedDisplay(
+                            delay: delayHelper.getDelayDuration(),
+                            child: CustomButton(
+                              onPressed: () {
+                                Get.to(() => SignUpPage());
+                              },
+                              isRounded: false,
+                              text: controller.capitalize(AppTexts.signUp),
+                              isOutlined: true,
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                        ],
+                      )
                     ],
-                  )
-                ],
+                  ),
+                ),
               ),
             ),
           )
