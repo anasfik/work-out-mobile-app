@@ -1,6 +1,7 @@
 import 'package:delayed_display/delayed_display.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:work_out/inAppData/Colors.dart';
 import 'package:work_out/inAppData/images%20sources.dart';
 import 'package:work_out/inAppData/text.dart';
 import 'package:work_out/view/screens/auth/SignUpPage.dart';
@@ -69,8 +70,10 @@ class GetStartedPage extends StatelessWidget {
                   ),
                   Theme(
                     data: Theme.of(context).copyWith(
-                      colorScheme: ColorScheme.fromSwatch()
-                          .copyWith(secondary: Colors.white),
+                      colorScheme: Theme.of(context).colorScheme.copyWith(
+                            primary: Colors.transparent,
+                            secondary: Colors.transparent,
+                          ),
                     ),
                     child: SingleChildScrollView(
                       physics: const ClampingScrollPhysics(),
