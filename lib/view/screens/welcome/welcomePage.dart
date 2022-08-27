@@ -16,8 +16,11 @@ import '../auth/loginPage.dart';
 class WelcomePage extends StatelessWidget {
   WelcomePage({Key? key}) : super(key: key);
 
+  // Dependency injection
   final FunctionsController controller = Get.put(FunctionsController());
-  final delayHelper = DelayHelper();
+
+  //
+  final delayHelper = DelayHelper();  
   @override
   Widget build(BuildContext context) {
     return Scaffold(

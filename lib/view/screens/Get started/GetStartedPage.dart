@@ -6,14 +6,19 @@ import 'package:work_out/inAppData/text.dart';
 import 'package:work_out/view/screens/auth/SignUpPage.dart';
 import '../../../controller/functionsController.dart';
 import '../../../inAppData/getStarted/getStartedData.dart';
+import '../../../inAppData/showDelayController.dart';
 import '../../components/general componenets/mainScreenTitle.dart';
 import '../../components/general componenets/titleWithDescription.dart';
 import 'componenets/GetStartedCard.dart';
 
 class GetStartedPage extends StatelessWidget {
   GetStartedPage({Key? key}) : super(key: key);
-  // depen. injection
+
+  // Dependency injection
   final FunctionsController controller = Get.put(FunctionsController());
+
+  //
+  final delayHelper = DelayHelper();
 
   @override
   Widget build(BuildContext context) {
@@ -32,57 +37,71 @@ class GetStartedPage extends StatelessWidget {
             color: const Color(0xff0B183C).withOpacity(0.69),
             width: double.infinity,
             child: Container(
-              margin: const EdgeInsets.only(
-                  left: 20, top: 15, bottom: 15, right: 0),
+              margin: const EdgeInsets.symmetric(
+                vertical: 15,
+              ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Container(
-                    margin: const EdgeInsets.only(right: 20),
-                    child: DelayedDisplay(
-                      delay: Duration(milliseconds: controller.delay + 100),
-                      child: MainScreenTitle(
-                          mainWord: AppTexts.firstMainWord,
-                          secondaryWord: AppTexts.secondaryMainWord),
-                    ),
-                  ),
-                  const SizedBox(height: 100),
+                  const Spacer(),
                   DelayedDisplay(
-                    delay: Duration(milliseconds: controller.delay + 200),
-                    child: TitleWithDescription(
-                      title: controller.capitalize(AppTexts.aboutYou),
-                      description: AppTexts.getStartedDescription,
+                    delay: delayHelper.getDelayDuration(),
+                    child: MainScreenTitle(
+                      mainWord: AppTexts.firstMainWord,
+                      secondaryWord: AppTexts.secondaryMainWord,
                     ),
                   ),
-                  const SizedBox(height: 100),
-                  SingleChildScrollView(
-                    physics: const BouncingScrollPhysics(),
-                    scrollDirection: Axis.horizontal,
-                    child: Wrap(
-                      direction: Axis.horizontal,
-                      children: [
-                        ...List.generate(
-                          cardsList.length,
-                          (i) => DelayedDisplay(
-                            delay: Duration(
-                                milliseconds:
-                                    controller.delay + 300 + 100 * (i + 1)),
-                            child: GetStartedCard(
-                              text: cardsList[i]["title"],
-                              description: cardsList[i]["description"],
+                  const Spacer(
+                    flex: 2,
+                  ),
+                  Container(
+                    margin: const EdgeInsets.only(left: 20),
+                    child: DelayedDisplay(
+                      delay: delayHelper.getDelayDuration(),
+                      child: TitleWithDescription(
+                        title: controller.capitalize(AppTexts.aboutYou),
+                        description: AppTexts.getStartedDescription,
+                      ),
+                    ),
+                  ),
+                  const Spacer(
+                    flex: 2,
+                  ),
+                  Theme(
+                    data: Theme.of(context).copyWith(
+                      colorScheme: ColorScheme.fromSwatch()
+                          .copyWith(secondary: Colors.white),
+                    ),
+                    child: SingleChildScrollView(
+                      physics: const ClampingScrollPhysics(),
+                      scrollDirection: Axis.horizontal,
+                      child: Container(
+                        padding: const EdgeInsets.only(left: 20),
+                        child: Wrap(
+                          direction: Axis.horizontal,
+                          children: [
+                            ...List.generate(
+                              cardsList.length,
+                              (i) => DelayedDisplay(
+                                delay: delayHelper.getDelayDuration(),
+                                child: GetStartedCard(
+                                  text: cardsList[i]["title"],
+                                  description: cardsList[i]["description"],
+                                ),
+                              ),
                             ),
-                          ),
+                          ],
                         ),
-                      ],
+                      ),
                     ),
                   ),
                   const SizedBox(
-                    height: 25,
+                    height: 20,
                   ),
                   Container(
-                    margin: const EdgeInsets.only(right: 20),
+                    margin: const EdgeInsets.symmetric(horizontal: 20),
                     child: DelayedDisplay(
-                      delay: Duration(milliseconds: controller.delay + 300),
+                      delay: delayHelper.getDelayDuration(),
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
