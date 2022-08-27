@@ -54,7 +54,7 @@ It's a mobile application for both android and ios made for work out and fitness
 - All texts that has nothing with app data cn be modified from one file( AppTexts class ) 
 - Divising app by components so it can be reusable
 - In app local data with pre-processing it for user experience( so it's no need to load from server, because the idea here that there no need to globally load to data, you can manage it however you want by making a new Model for anything you need to move and linking it to the app ) 
-
+- randomize the shown Image on genral screens (Login, SignUp, GetStarted, Homepage...)
 </p>
 <p align="center">
 <img src="imgs/githubSrc/2.png" alt="app banner"  height="150"/>
