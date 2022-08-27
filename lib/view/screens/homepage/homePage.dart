@@ -54,193 +54,206 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           width: double.infinity,
-          child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 15),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                const SizedBox(
-                  height: 50,
-                ),
-                Obx(
-                  () => ProfileAndUsername(
-                    onProfileImgTap: () {
-                      Get.to(() => const UserProfile());
-                    },
-                    username: controller.capitalize(
-                      userInformationController.username.value,
+          child: SingleChildScrollView(
+            child: ConstrainedBox(
+              constraints: BoxConstraints(
+                maxHeight: MediaQuery.of(context).size.height,
+                maxWidth: MediaQuery.of(context).size.width,
+              ),
+              child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 15),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    const SizedBox(
+                      height: 50,
                     ),
-                    profileImg: userInformationController.userProfileImg.value,
-                  ),
-                ),
-                const SizedBox(
-                  height: 55,
-                ),
-                DelayedDisplay(
-                  delay: Duration(milliseconds: controller.delay + 100),
-                  child: const PlayButton(),
-                ),
-                const SizedBox(
-                  height: 55,
-                ),
-                DelayedDisplay(
-                  delay: Duration(milliseconds: controller.delay + 200),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      RichText(
-                        text: TextSpan(
-                          text: controller.capitalize(AppTexts.find),
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Theme.of(context).primaryColor,
-                            fontSize: 25,
-                          ),
-                          children: [
-                            const TextSpan(text: " "),
-                            TextSpan(
-                              text: controller.capitalize(AppTexts.yourWorkout),
-                              style: const TextStyle(
+                    Obx(
+                      () => ProfileAndUsername(
+                        onProfileImgTap: () {
+                          Get.to(() => const UserProfile());
+                        },
+                        username: controller.capitalize(
+                          userInformationController.username.value,
+                        ),
+                        profileImg:
+                            userInformationController.userProfileImg.value,
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 55,
+                    ),
+                    DelayedDisplay(
+                      delay: Duration(milliseconds: controller.delay + 100),
+                      child: PlayButton(),
+                    ),
+                    const SizedBox(
+                      height: 55,
+                    ),
+                    DelayedDisplay(
+                      delay: Duration(milliseconds: controller.delay + 200),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          RichText(
+                            text: TextSpan(
+                              text: controller.capitalize(AppTexts.find),
+                              style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: Colors.white,
+                                color: Theme.of(context).primaryColor,
+                                fontSize: 25,
                               ),
+                              children: [
+                                const TextSpan(text: " "),
+                                TextSpan(
+                                  text: controller
+                                      .capitalize(AppTexts.yourWorkout),
+                                  style: const TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          GestureDetector(
+                            onTap: (() {
+                              showDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    return AlertDialog(
+                                      actionsAlignment:
+                                          MainAxisAlignment.center,
+                                      title: Text(AppTexts.filterBy),
+                                      content: const ItemsCheckboxTiles(),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () {
+                                            Get.back();
+                                          },
+                                          style: ButtonStyle(
+                                            overlayColor:
+                                                MaterialStateProperty.all(
+                                              Colors.grey[200],
+                                            ),
+                                          ),
+                                          child: Text(
+                                            AppTexts.cancel,
+                                            style: const TextStyle(
+                                                color: Colors.red),
+                                          ),
+                                        ),
+                                        TextButton(
+                                          style: ButtonStyle(
+                                            overlayColor:
+                                                MaterialStateProperty.all(
+                                              Colors.grey[200],
+                                            ),
+                                          ),
+                                          onPressed: () {},
+                                          child: Text(
+                                            AppTexts.apply,
+                                            style: const TextStyle(
+                                              color: Colors.black,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    );
+                                  });
+                            }),
+                            child: const Icon(
+                              Icons.filter_alt_outlined,
+                              color: Colors.white,
+                              size: 26,
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    SizedBox(
+                      height: 45,
+                      child: DelayedDisplay(
+                        delay: Duration(milliseconds: controller.delay + 300),
+                        child: const HomePageSearchBar(),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    Container(
+                      height: 40,
+                      child: DelayedDisplay(
+                        delay: Duration(milliseconds: controller.delay + 400),
+                        child: TabBar(
+                          labelColor: Colors.white,
+                          isScrollable: true,
+                          indicator: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            border: Border.all(
+                              color: Theme.of(context).primaryColor,
+                              width: 2,
+                            ),
+                          ),
+                          controller: _tabx.workOutTabController,
+                          tabs: _tabx.workOutTabs,
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: DelayedDisplay(
+                        delay: Duration(milliseconds: controller.delay + 600),
+                        child: TabBarView(
+                          controller: _tabx.workOutTabController,
+                          children: [
+                            Center(
+                              child: TabBarViewSection(
+                                title: controller.capitalize(
+                                  'All workouts',
+                                ),
+                                dataList: WorkoutsList.allWorkoutsList,
+                              ),
+                            ),
+                            Center(
+                              child: TabBarViewSection(
+                                title: controller.capitalize(
+                                  'Popular',
+                                ),
+                                dataList: WorkoutsList.popularWorkoutsList,
+                              ),
+                            ),
+                            Center(
+                              child: TabBarViewSection(
+                                  title: controller.capitalize(
+                                    'hard',
+                                  ),
+                                  dataList: WorkoutsList.hardWorkoutsList),
+                            ),
+                            Center(
+                              child: TabBarViewSection(
+                                  title: controller.capitalize(
+                                    'Full body',
+                                  ),
+                                  dataList: WorkoutsList.fullBodyWorkoutsList),
+                            ),
+                            Center(
+                              child: TabBarViewSection(
+                                  title: controller.capitalize(
+                                    'Crossfit',
+                                  ),
+                                  dataList: WorkoutsList.crossFit),
                             ),
                           ],
                         ),
                       ),
-                      GestureDetector(
-                        onTap: (() {
-                          showDialog(
-                              context: context,
-                              builder: (context) {
-                                return AlertDialog(
-                                  actionsAlignment: MainAxisAlignment.center,
-                                  title: Text(AppTexts.filterBy),
-                                  content: const ItemsCheckboxTiles(),
-                                  actions: [
-                                    TextButton(
-                                      onPressed: () {
-                                        Get.back();
-                                      },
-                                      style: ButtonStyle(
-                                        overlayColor: MaterialStateProperty.all(
-                                          Colors.grey[200],
-                                        ),
-                                      ),
-                                      child: Text(
-                                        AppTexts.cancel,
-                                        style:
-                                            const TextStyle(color: Colors.red),
-                                      ),
-                                    ),
-                                    TextButton(
-                                      style: ButtonStyle(
-                                        overlayColor: MaterialStateProperty.all(
-                                          Colors.grey[200],
-                                        ),
-                                      ),
-                                      onPressed: () {},
-                                      child: Text(
-                                        AppTexts.apply,
-                                        style: const TextStyle(
-                                          color: Colors.black,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                );
-                              });
-                        }),
-                        child: const Icon(
-                          Icons.filter_alt_outlined,
-                          color: Colors.white,
-                          size: 26,
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-                const SizedBox(
-                  height: 15,
-                ),
-                SizedBox(
-                  height: 45,
-                  child: DelayedDisplay(
-                    delay: Duration(milliseconds: controller.delay + 300),
-                    child: const HomePageSearchBar(),
-                  ),
-                ),
-                const SizedBox(
-                  height: 15,
-                ),
-                Container(
-                  height: 40,
-                  child: DelayedDisplay(
-                    delay: Duration(milliseconds: controller.delay + 400),
-                    child: TabBar(
-                      labelColor: Colors.white,
-                      isScrollable: true,
-                      indicator: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        border: Border.all(
-                          color: Theme.of(context).primaryColor,
-                          width: 2,
-                        ),
-                      ),
-                      controller: _tabx.workOutTabController,
-                      tabs: _tabx.workOutTabs,
                     ),
-                  ),
+                  ],
                 ),
-                Expanded(
-                  child: DelayedDisplay(
-                    delay: Duration(milliseconds: controller.delay + 600),
-                    child: TabBarView(
-                      controller: _tabx.workOutTabController,
-                      children: [
-                        Center(
-                          child: TabBarViewSection(
-                            title: controller.capitalize(
-                              'All workouts',
-                            ),
-                            dataList: WorkoutsList.allWorkoutsList,
-                          ),
-                        ),
-                        Center(
-                          child: TabBarViewSection(
-                            title: controller.capitalize(
-                              'Popular',
-                            ),
-                            dataList: WorkoutsList.popularWorkoutsList,
-                          ),
-                        ),
-                        Center(
-                          child: TabBarViewSection(
-                              title: controller.capitalize(
-                                'hard',
-                              ),
-                              dataList: WorkoutsList.hardWorkoutsList),
-                        ),
-                        Center(
-                          child: TabBarViewSection(
-                              title: controller.capitalize(
-                                'Full body',
-                              ),
-                              dataList: WorkoutsList.fullBodyWorkoutsList),
-                        ),
-                        Center(
-                          child: TabBarViewSection(
-                              title: controller.capitalize(
-                                'Crossfit',
-                              ),
-                              dataList: WorkoutsList.crossFit),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
+              ),
             ),
           ),
         ),

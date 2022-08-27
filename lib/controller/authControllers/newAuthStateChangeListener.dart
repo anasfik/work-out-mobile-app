@@ -23,7 +23,7 @@ class NewAuthStateChangeListener extends GetxController {
         Get.offAll(EmailVerificatioPage());
       } else {
         // print("user is signed in");
-        Get.offAll(const HomePage());
+        Get.offAll(HomePage());
       }
     }
   }

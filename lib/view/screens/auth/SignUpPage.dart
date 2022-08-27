@@ -18,7 +18,7 @@ class SignUpPage extends StatelessWidget {
   // Dependency injection
   final FunctionsController controller = Get.put(FunctionsController());
   final additional signUpController = Get.put(additional());
-
+  //
   final DelayHelper delayHelper = DelayHelper();
   @override
   Widget build(BuildContext context) {
