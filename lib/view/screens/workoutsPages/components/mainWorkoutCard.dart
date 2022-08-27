@@ -124,7 +124,7 @@ class MainWorkoutCard extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const Align(
+                  Align(
                     alignment: Alignment.center,
                     child: PlayButton(),
                   ),
@@ -158,8 +158,8 @@ class MainWorkoutCard extends StatelessWidget {
                     top: 30,
                     left: 20,
                     child: Container(
-                      padding:
-                          const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 10, vertical: 5),
                       decoration: BoxDecoration(
                         color: Theme.of(context).primaryColor,
                         borderRadius: BorderRadius.circular(10),

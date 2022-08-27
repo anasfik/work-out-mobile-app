@@ -58,7 +58,7 @@ class EmailVerificatioController extends GetxController {
       });
 
       // Go to homepage now
-      Get.offAll(const HomePage());
+      Get.offAll(HomePage());
     }
 
     // Check if it's false
