@@ -102,11 +102,11 @@ class GetStartedPage extends StatelessWidget {
                     height: 20,
                   ),
                   Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 20),
+                    margin:
+                        const EdgeInsets.symmetric(horizontal: 20, vertical: 0),
                     child: DelayedDisplay(
                       delay: delayHelper.getDelayDuration(),
                       child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           GestureDetector(
@@ -118,18 +118,39 @@ class GetStartedPage extends StatelessWidget {
                               ),
                             ),
                           ),
-                          ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 20,
-                              ),
-                              primary: Theme.of(context).primaryColor,
+                          IntrinsicHeight(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Align(
+                                  alignment: Alignment.center,
+                                  child: Text(
+                                    "2 / ${cardsList.length}",
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: AppColors.green,
+                                      fontSize: 12,
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(width: 15),
+                                ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 20,
+                                    ),
+                                    primary: Theme.of(context).primaryColor,
+                                  ),
+                                  onPressed: () {
+                                    Get.to(SignUpPage());
+                                  },
+                                  child: Text(
+                                      controller.capitalize(AppTexts.next),
+                                      style:
+                                          const TextStyle(color: Colors.white)),
+                                ),
+                              ],
                             ),
-                            onPressed: () {
-                              Get.to(SignUpPage());
-                            },
-                            child: Text(controller.capitalize(AppTexts.next),
-                                style: const TextStyle(color: Colors.white)),
                           ),
                         ],
                       ),

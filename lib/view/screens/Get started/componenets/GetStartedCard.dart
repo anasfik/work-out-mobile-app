@@ -72,7 +72,7 @@ class GetStartedCard extends StatelessWidget {
             decoration: BoxDecoration(
               border: Border.all(
                 width: 1,
-                color: cardBorderColor.withOpacity(1),
+                color: cardBorderColor,
               ),
               color: AppColors.darkBlue,
               borderRadius: BorderRadius.circular(10),
