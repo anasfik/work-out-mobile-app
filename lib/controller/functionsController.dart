@@ -1,6 +1,10 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../inAppData/filteredList/filteres.dart';
+import '../inAppData/text.dart';
+import '../view/screens/homepage/componenets/ItemsSwitchTiles.dart';
 
 class FunctionsController extends GetxController {
   // Variables
@@ -60,4 +64,51 @@ class FunctionsController extends GetxController {
             workOut[preperty] != null && workOut[preperty].contains(itsValue))
         .toList();
   }
+
+
+
+  // Show filter dialog
+
+  void showFilterDialog(BuildContext context) {
+      showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            actionsAlignment: MainAxisAlignment.center,
+            title: Text(AppTexts.filterBy),
+            content: const ItemsCheckboxTiles(),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Get.back();
+                },
+                style: ButtonStyle(
+                  overlayColor: MaterialStateProperty.all(
+                    Colors.grey[200],
+                  ),
+                ),
+                child: Text(
+                  AppTexts.cancel,
+                  style: const TextStyle(color: Colors.red),
+                ),
+              ),
+              TextButton(
+                style: ButtonStyle(
+                  overlayColor: MaterialStateProperty.all(
+                    Colors.grey[200],
+                  ),
+                ),
+                onPressed: () {},
+                child: Text(
+                  AppTexts.apply,
+                  style: const TextStyle(
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+            ],
+          );
+        });
+          
+  }                 
 }

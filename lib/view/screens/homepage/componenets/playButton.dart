@@ -3,7 +3,10 @@ import 'package:get/get.dart';
 import 'package:work_out/controller/functionsController.dart';
 
 class PlayButton extends StatelessWidget {
-  PlayButton({Key? key, this.onPressed}) : super(key: key);
+  PlayButton({
+    Key? key,
+    this.onPressed,
+  }) : super(key: key);
   final void Function()? onPressed;
   final FunctionsController functionsController = Get.find();
   double scale = 1.0;

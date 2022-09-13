@@ -4,15 +4,14 @@ import 'package:work_out/inAppData/Colors.dart';
 
 import '../../work out details/workOutDetails.dart';
 
-
 class WorkOutCard extends StatelessWidget {
-  WorkOutCard(
-      {Key? key,
-      required this.title,
-      required this.imagePath,
-      required this.listCollection,
-      required this.index})
-      : super(key: key);
+  WorkOutCard({
+    Key? key,
+    required this.title,
+    required this.imagePath,
+    required this.listCollection,
+    required this.index,
+  }) : super(key: key);
 
   String title;
   String imagePath;
@@ -40,7 +39,6 @@ class WorkOutCard extends StatelessWidget {
       child: Container(
         margin: const EdgeInsets.only(right: 20),
         child: Column(
-          
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ClipRRect(

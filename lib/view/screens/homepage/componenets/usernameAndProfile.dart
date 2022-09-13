@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 import '../../../../inAppData/text.dart';
@@ -40,7 +39,10 @@ class ProfileAndUsername extends StatelessWidget {
             ],
           ),
         ),
-        Avatar(onProfileImgTap: onProfileImgTap, networkImage: profileImg),
+        Avatar(
+          onProfileImgTap: onProfileImgTap,
+          networkImage: profileImg,
+        ),
       ],
     );
   }

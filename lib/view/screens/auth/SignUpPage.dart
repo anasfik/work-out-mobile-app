@@ -10,6 +10,7 @@ import '../../../inAppData/images sources.dart';
 import '../../../inAppData/showDelayController.dart';
 import '../../components/general componenets/button.dart';
 import '../../components/general componenets/mainScreenTitle.dart';
+import '../../components/general componenets/screen_background_image.dart';
 import '../../components/general componenets/text field.dart';
 import '../../components/general componenets/titleWithDescription.dart';
 
@@ -25,12 +26,8 @@ class SignUpPage extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
-          SizedBox(
-            width: double.infinity,
-            child: Image.asset(
-              ImgSrc().randomFromAssetsList(),
-              fit: BoxFit.cover,
-            ),
+          BackgroundImage(
+            backgroundImage: ImgSrc().randomFromAssetsList(),
           ),
           Container(
             decoration: BoxDecoration(

@@ -10,20 +10,19 @@ import '../../../controller/functionsController.dart';
 import '../../../controller/tabs controllers/workOutTabController.dart';
 import '../../../controller/userController/userController.dart';
 import '../../../inAppData/images sources.dart';
+import '../../components/general componenets/screen_background_image.dart';
 import 'componenets/HomePageSearchBar.dart';
 import 'componenets/ItemsSwitchTiles.dart';
+import 'componenets/find_your_workout.dart';
 import 'componenets/playButton.dart';
 import 'componenets/tabBarViewSections.dart';
 import 'componenets/usernameAndProfile.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+class HomePage extends StatelessWidget {
+  HomePage({
+    Key? key,
+  }) : super(key: key);
 
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
   final FunctionsController controller = Get.put(FunctionsController());
   final UserInformationController userInformationController =
       Get.put(UserInformationController());
@@ -34,12 +33,8 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
         body: Stack(
       children: [
-        SizedBox(
-          width: double.infinity,
-          child: Image.asset(
-            ImgSrc().randomFromAssetsList(),
-            fit: BoxFit.cover,
-          ),
+        BackgroundImage(
+          backgroundImage: ImgSrc().randomFromAssetsList(),
         ),
         Container(
           decoration: BoxDecoration(
@@ -96,72 +91,10 @@ class _HomePageState extends State<HomePage> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          RichText(
-                            text: TextSpan(
-                              text: controller.capitalize(AppTexts.find),
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Theme.of(context).primaryColor,
-                                fontSize: 25,
-                              ),
-                              children: [
-                                const TextSpan(text: " "),
-                                TextSpan(
-                                  text: controller
-                                      .capitalize(AppTexts.yourWorkout),
-                                  style: const TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
+                          const FindYourWorkout(),
                           GestureDetector(
                             onTap: (() {
-                              showDialog(
-                                  context: context,
-                                  builder: (context) {
-                                    return AlertDialog(
-                                      actionsAlignment:
-                                          MainAxisAlignment.center,
-                                      title: Text(AppTexts.filterBy),
-                                      content: const ItemsCheckboxTiles(),
-                                      actions: [
-                                        TextButton(
-                                          onPressed: () {
-                                            Get.back();
-                                          },
-                                          style: ButtonStyle(
-                                            overlayColor:
-                                                MaterialStateProperty.all(
-                                              Colors.grey[200],
-                                            ),
-                                          ),
-                                          child: Text(
-                                            AppTexts.cancel,
-                                            style: const TextStyle(
-                                                color: Colors.red),
-                                          ),
-                                        ),
-                                        TextButton(
-                                          style: ButtonStyle(
-                                            overlayColor:
-                                                MaterialStateProperty.all(
-                                              Colors.grey[200],
-                                            ),
-                                          ),
-                                          onPressed: () {},
-                                          child: Text(
-                                            AppTexts.apply,
-                                            style: const TextStyle(
-                                              color: Colors.black,
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    );
-                                  });
+                              controller.showFilterDialog(context);
                             }),
                             child: const Icon(
                               Icons.filter_alt_outlined,
@@ -188,7 +121,9 @@ class _HomePageState extends State<HomePage> {
                     Container(
                       height: 40,
                       child: DelayedDisplay(
-                        delay: Duration(milliseconds: controller.delay + 400),
+                        delay: Duration(
+                          milliseconds: controller.delay + 400,
+                        ),
                         child: TabBar(
                           labelColor: Colors.white,
                           isScrollable: true,
