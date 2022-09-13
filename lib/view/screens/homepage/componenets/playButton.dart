@@ -14,6 +14,10 @@ class PlayButton extends StatelessWidget {
       init: FunctionsController(),
       builder: (functionsController) {
         return GestureDetector(
+          onPanEnd: (details) {
+            scale = 1;
+            functionsController.update();
+          },
           onPanDown: (d) {
             scale = 0.9;
             functionsController.update();
