@@ -18,14 +18,22 @@ import 'componenets/playButton.dart';
 import 'componenets/tabBarViewSections.dart';
 import 'componenets/usernameAndProfile.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   HomePage({
     Key? key,
   }) : super(key: key);
 
+  final String bgImg = ImgSrc().randomFromAssetsList();
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   final FunctionsController controller = Get.put(FunctionsController());
+
   final UserInformationController userInformationController =
       Get.put(UserInformationController());
+
   final CustomTabBarController _tabx = Get.put(CustomTabBarController());
 
   @override
@@ -34,7 +42,7 @@ class HomePage extends StatelessWidget {
         body: Stack(
       children: [
         BackgroundImage(
-          backgroundImage: ImgSrc().randomFromAssetsList(),
+          backgroundImage: widget.bgImg,
         ),
         Container(
           decoration: BoxDecoration(
