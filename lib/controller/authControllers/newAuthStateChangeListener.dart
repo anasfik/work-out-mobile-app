@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:work_out/view/screens/auth/EmailVerification.dart';
-import 'package:work_out/view/screens/welcome/welcomePage.dart';
+import 'package:work_out/view/screens/welcome/welcome_page.dart';
 
 import '../../view/screens/homepage/homePage.dart';
 

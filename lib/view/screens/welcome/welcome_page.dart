@@ -5,37 +5,28 @@ import 'package:work_out/config/Colors.dart';
 import 'package:work_out/config/images%20sources.dart';
 import 'package:work_out/config/text.dart';
 import 'package:work_out/view/components/general%20componenets/titleWithDescription.dart';
-import 'package:work_out/view/screens/Get%20started/GetStartedPage.dart';
 import 'package:work_out/view/screens/toggle%20laungage/chooseLaungagePage.dart';
 import '../../../controller/functionsController.dart';
-import '../../../config/showDelayController.dart';
+import '../../../config/show_delay_mixin.dart';
 import '../../components/general componenets/button.dart';
 import '../../components/general componenets/mainScreenTitle.dart';
-import '../auth/loginPage.dart';
+import '../../components/general componenets/screen_background_image.dart';
 
-class WelcomePage extends StatelessWidget {
+class WelcomePage extends GetView<FunctionsController> with DelayHelperMixin {
   WelcomePage({Key? key}) : super(key: key);
 
-  // Dependency injection
-  final FunctionsController controller = Get.put(FunctionsController());
-
-  //
-  final delayHelper = DelayHelper();  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
         fit: StackFit.expand,
         children: [
-          SizedBox(
-            width: double.infinity,
-            child: Image.asset(
-              ImgSrc().randomFromAssetsList(),
-              fit: BoxFit.cover,
-            ),
+          BackgroundImage(
+            backgroundImage: ImgSrc().randomFromAssetsList(),
           ),
           Container(
-            color: AppColors.darkBlue.withOpacity(0.69),
+       
+            color: AppColors.darkBlue.withOpacity(0.69),      // Nice
             width: double.infinity,
             child: Container(
               margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
@@ -45,7 +36,7 @@ class WelcomePage extends StatelessWidget {
                   const Spacer(),
                   // Hard Element MainScreenTitle
                   DelayedDisplay(
-                    delay: delayHelper.getDelayDuration(),
+                    delay: getDelayDuration(),
                     child: MainScreenTitle(
                       mainWord: AppTexts.firstMainWord,
                       secondaryWord: AppTexts.secondaryMainWord,
@@ -57,7 +48,7 @@ class WelcomePage extends StatelessWidget {
                   ),
                   // Screen TitleWithDescription
                   DelayedDisplay(
-                    delay: delayHelper.getDelayDuration(),
+                    delay: getDelayDuration(),
                     child: TitleWithDescription(
                       title: controller.capitalize(AppTexts.welcome),
                       description: AppTexts.welcomeDescription,
@@ -72,10 +63,10 @@ class WelcomePage extends StatelessWidget {
                     children: [
                       // Get Started button
                       DelayedDisplay(
-                        delay: delayHelper.getDelayDuration(),
+                        delay: getDelayDuration(),
                         child: CustomButton(
                           onPressed: () {
-                            Get.to(GetStartedPage());
+                            Get.toNamed("/get_started");
                           },
                           text: controller.capitalize(AppTexts.getStarted),
                           isOutlined: false,
@@ -86,10 +77,10 @@ class WelcomePage extends StatelessWidget {
                       ),
                       // Login Button
                       DelayedDisplay(
-                        delay: delayHelper.getDelayDuration(),
+                        delay: getDelayDuration(),
                         child: CustomButton(
                           onPressed: () {
-                            Get.to(LoginPage());
+                            Get.toNamed("/login");
                           },
                           text: controller.capitalize(AppTexts.login),
                           isOutlined: true,
@@ -105,7 +96,7 @@ class WelcomePage extends StatelessWidget {
                             Get.to(ChooseLaungagePage());
                           },
                           child: DelayedDisplay(
-                            delay: delayHelper.getDelayDuration(),
+                            delay: getDelayDuration(),
                             child: Text(
                               AppTexts.changeLaungage,
                               style: TextStyle(

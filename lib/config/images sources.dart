@@ -21,7 +21,7 @@ class ImgSrc {
 
   static String noImgAvailable = "imgs/No_image_available.png";
 
-  randomFromAssetsList() {
+  String randomFromAssetsList() {
     return imgList[Random().nextInt(imgList.length)];
   }
 }

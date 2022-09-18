@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 
+import '../../../config/images sources.dart';
+
 class BackgroundImage extends StatelessWidget {
   const BackgroundImage({
     Key? key,
-    required this.backgroundImage,
+    this.backgroundImage,
   }) : super(key: key);
-
-  final String backgroundImage;
+  final String? backgroundImage;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
       child: Image.asset(
-        backgroundImage,
+        backgroundImage ?? ImgSrc().randomFromAssetsList(),
         fit: BoxFit.cover,
       ),
     );

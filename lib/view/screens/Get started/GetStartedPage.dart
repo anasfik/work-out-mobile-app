@@ -4,10 +4,11 @@ import 'package:get/get.dart';
 import 'package:work_out/config/Colors.dart';
 import 'package:work_out/config/images%20sources.dart';
 import 'package:work_out/config/text.dart';
+import 'package:work_out/view/components/general%20componenets/screen_background_image.dart';
 import 'package:work_out/view/screens/auth/SignUpPage.dart';
 import '../../../controller/functionsController.dart';
 import '../../../config/getStarted/getStartedData.dart';
-import '../../../config/showDelayController.dart';
+import '../../../config/show_delay_mixin.dart';
 import '../../components/general componenets/mainScreenTitle.dart';
 import '../../components/general componenets/titleWithDescription.dart';
 import 'componenets/GetStartedCard.dart';
@@ -27,13 +28,7 @@ class GetStartedPage extends StatelessWidget {
       body: Stack(
         fit: StackFit.expand,
         children: [
-          SizedBox(
-            width: double.infinity,
-            child: Image.asset(
-              ImgSrc().randomFromAssetsList(),
-              fit: BoxFit.cover,
-            ),
-          ),
+          const BackgroundImage(),
           Container(
             color: const Color(0xff0B183C).withOpacity(0.69),
             width: double.infinity,

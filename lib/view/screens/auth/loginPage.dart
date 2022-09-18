@@ -2,7 +2,7 @@ import 'package:delayed_display/delayed_display.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:work_out/config/images%20sources.dart';
-import 'package:work_out/config/showDelayController.dart';
+import 'package:work_out/config/show_delay_mixin.dart';
 import 'package:work_out/config/text.dart';
 
 import '../../../controller/authControllers/loginController.dart';

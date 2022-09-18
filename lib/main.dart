@@ -25,6 +25,7 @@ class WorkoutApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       getPages: Routes.pages,
       initialRoute: "/",
+      
     );
   }
 }
