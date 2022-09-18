@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:work_out/controller/functionsController.dart';
 
-import '../../../../inAppData/text.dart';
+import '../../../../config/text.dart';
 
 class FindYourWorkout extends GetView<FunctionsController> {
   const FindYourWorkout({

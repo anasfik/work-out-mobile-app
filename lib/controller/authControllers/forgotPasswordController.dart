@@ -3,7 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:work_out/controller/functionsController.dart';
 import 'package:work_out/controller/functionsController/dialogsAndLoadingController.dart';
-import 'package:work_out/inAppData/text.dart';
+import 'package:work_out/config/text.dart';
 
 class ForgotPasswordController extends GetxController {
   // Dependency injection

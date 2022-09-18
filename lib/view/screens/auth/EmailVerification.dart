@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:work_out/controller/authControllers/signOutController.dart';
 import 'package:work_out/controller/functionsController.dart';
-import 'package:work_out/inAppData/images%20sources.dart';
-import 'package:work_out/inAppData/text.dart';
+import 'package:work_out/config/images%20sources.dart';
+import 'package:work_out/config/text.dart';
 import 'package:work_out/view/components/general%20componenets/button.dart';
 
 import '../../../controller/authControllers/emailVerficationController.dart';

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:work_out/controller/functionsController.dart';
-import 'package:work_out/inAppData/images%20sources.dart';
+import 'package:work_out/config/images%20sources.dart';
 
-import '../../../../inAppData/text.dart';
+import '../../../../config/text.dart';
 import '../../workoutsPages/AllWorkoutsPage.dart';
 import 'WorkOutCard.dart';
 

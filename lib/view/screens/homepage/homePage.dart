@@ -1,15 +1,15 @@
 import 'package:delayed_display/delayed_display.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:work_out/inAppData/Colors.dart';
-import 'package:work_out/inAppData/text.dart';
-import 'package:work_out/inAppData/workouts%20lists/workouts%20Lists.dart';
+import 'package:work_out/config/Colors.dart';
+import 'package:work_out/config/text.dart';
+import 'package:work_out/config/workouts%20lists/workouts%20Lists.dart';
 import 'package:work_out/view/screens/user%20profile/userProfil.dart';
 
 import '../../../controller/functionsController.dart';
 import '../../../controller/tabs controllers/workOutTabController.dart';
 import '../../../controller/userController/userController.dart';
-import '../../../inAppData/images sources.dart';
+import '../../../config/images sources.dart';
 import '../../components/general componenets/screen_background_image.dart';
 import 'componenets/HomePageSearchBar.dart';
 import 'componenets/ItemsSwitchTiles.dart';

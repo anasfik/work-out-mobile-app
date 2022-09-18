@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:work_out/controller/functionsController.dart';
-import 'package:work_out/inAppData/Colors.dart';
+import 'package:work_out/config/Colors.dart';
 
 import '../../../../controller/getStartedController/cardsList.dart';
 import '../../../components/general componenets/CheckMark.dart';

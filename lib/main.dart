@@ -1,35 +1,16 @@
 import "package:flutter/material.dart";
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:work_out/inAppData/Colors.dart';
-import 'package:work_out/inAppData/Themes/mainThemeFile.dart';
-import 'package:work_out/view/components/general%20componenets/customMaterialColor.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'controller/authControllers/newAuthStateChangeListener.dart';
-import 'firebase_options.dart';
-import 'inAppData/routes.dart';
+import 'package:work_out/bindings/initial_binding.dart';
+import 'package:work_out/config/Themes/mainThemeFile.dart';
+import 'package:work_out/config/initial_main_methods/initial_main_methods.dart';
+import 'config/routes.dart';
 
 void main() async {
-  // init binding
-  WidgetsFlutterBinding.ensureInitialized();
-
-  // init firebase
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
+  await MainMethods.init();
+  runApp(
+    const WorkoutApp(),
   );
-
-  // set the orientation to portrait only (there is no need for landscape)
-  SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp,
-    DeviceOrientation.portraitDown,
-  ]);
-
-  // inject the auth changes listener controller
-  Get.put<NewAuthStateChangeListener>(NewAuthStateChangeListener());
-
-//
-  runApp(const WorkoutApp());
 }
 
 class WorkoutApp extends StatelessWidget {
@@ -38,21 +19,11 @@ class WorkoutApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      defaultTransition: Transition.native,
-      theme: ThemeData(
-        textTheme: GoogleFonts.latoTextTheme(
-          Theme.of(context).textTheme,
-        ),
-        colorScheme: ColorScheme.fromSwatch(
-          primarySwatch: colorCustom,
-        ),
-        inputDecorationTheme: MainTheme.inputDecoration,
-        primaryColor: AppColors.green,
-      ),
+      initialBinding: InitialBinding(),
+      defaultTransition: Transition.rightToLeftWithFade,
+      theme: MainTheme(context).themeData,
       debugShowCheckedModeBanner: false,
       getPages: Routes.pages,
-
-      // this is optional, but recommended
       initialRoute: "/",
     );
   }

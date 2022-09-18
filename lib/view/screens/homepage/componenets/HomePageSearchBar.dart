@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:work_out/inAppData/text.dart';
+import 'package:work_out/config/text.dart';
 
 class HomePageSearchBar extends StatelessWidget {
   const HomePageSearchBar({Key? key}) : super(key: key);

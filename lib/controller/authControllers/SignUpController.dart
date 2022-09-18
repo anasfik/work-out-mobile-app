@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:work_out/controller/functionsController.dart';
-import 'package:work_out/inAppData/text.dart';
+import 'package:work_out/config/text.dart';
 import 'package:work_out/view/screens/auth/EmailVerification.dart';
 import '../functionsController/dialogsAndLoadingController.dart';
 

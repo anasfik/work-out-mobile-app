@@ -1,13 +1,13 @@
 import 'package:delayed_display/delayed_display.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:work_out/inAppData/images%20sources.dart';
-import 'package:work_out/inAppData/showDelayController.dart';
-import 'package:work_out/inAppData/text.dart';
+import 'package:work_out/config/images%20sources.dart';
+import 'package:work_out/config/showDelayController.dart';
+import 'package:work_out/config/text.dart';
 
 import '../../../controller/authControllers/loginController.dart';
 import '../../../controller/functionsController.dart';
-import '../../../inAppData/Colors.dart';
+import '../../../config/Colors.dart';
 import '../../components/general componenets/button.dart';
 import '../../components/general componenets/mainScreenTitle.dart';
 import '../../components/general componenets/text field.dart';

@@ -5,8 +5,8 @@ import 'package:get/get.dart';
 import 'package:work_out/controller/functionsController.dart';
 
 import '../../../controller/tabs controllers/detailsTabController.dart';
-import '../../../inAppData/Colors.dart';
-import '../../../inAppData/text.dart';
+import '../../../config/Colors.dart';
+import '../../../config/text.dart';
 
 import '../../components/general componenets/actionButton.dart';
 import 'componenets/RatingStars.dart';

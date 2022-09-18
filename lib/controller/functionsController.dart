@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../inAppData/filteredList/filteres.dart';
-import '../inAppData/text.dart';
+import '../config/filteredList/filteres.dart';
+import '../config/text.dart';
 import '../view/screens/homepage/componenets/ItemsSwitchTiles.dart';
 
 class FunctionsController extends GetxController {

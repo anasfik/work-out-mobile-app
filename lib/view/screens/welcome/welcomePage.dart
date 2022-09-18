@@ -1,14 +1,14 @@
 import 'package:delayed_display/delayed_display.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:work_out/inAppData/Colors.dart';
-import 'package:work_out/inAppData/images%20sources.dart';
-import 'package:work_out/inAppData/text.dart';
+import 'package:work_out/config/Colors.dart';
+import 'package:work_out/config/images%20sources.dart';
+import 'package:work_out/config/text.dart';
 import 'package:work_out/view/components/general%20componenets/titleWithDescription.dart';
 import 'package:work_out/view/screens/Get%20started/GetStartedPage.dart';
 import 'package:work_out/view/screens/toggle%20laungage/chooseLaungagePage.dart';
 import '../../../controller/functionsController.dart';
-import '../../../inAppData/showDelayController.dart';
+import '../../../config/showDelayController.dart';
 import '../../components/general componenets/button.dart';
 import '../../components/general componenets/mainScreenTitle.dart';
 import '../auth/loginPage.dart';

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../inAppData/text.dart';
+import '../../../../config/text.dart';
 import 'avatar.dart';
 
 class ProfileAndUsername extends StatelessWidget {

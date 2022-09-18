@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:work_out/controller/functionsController.dart';
-import 'package:work_out/inAppData/text.dart';
+import 'package:work_out/config/text.dart';
 
 import '../../view/screens/homepage/homePage.dart';
 import '../functionsController/dialogsAndLoadingController.dart';

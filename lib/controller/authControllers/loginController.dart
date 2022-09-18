@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:work_out/controller/functionsController.dart';
-import 'package:work_out/inAppData/text.dart';
+import 'package:work_out/config/text.dart';
 
 import '../functionsController/dialogsAndLoadingController.dart';
 
