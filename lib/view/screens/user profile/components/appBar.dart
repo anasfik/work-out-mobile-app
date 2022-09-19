@@ -5,6 +5,7 @@ import 'package:work_out/config/Colors.dart';
 import 'package:work_out/config/text.dart';
 
 import '../../../../controller/authControllers/signOutController.dart';
+import '../../../../helpers/string_methods.dart';
 
 class ProfileAppBar extends StatelessWidget {
   ProfileAppBar({
@@ -15,7 +16,7 @@ class ProfileAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return AppBar(
       title: Text(
-        controller.capitalize(AppTexts.profile),
+        capitalize(AppTexts.profile),
         style: const TextStyle(
           color: Colors.white,
           fontSize: 25,
@@ -31,7 +32,7 @@ class ProfileAppBar extends StatelessWidget {
                 style: ElevatedButton.styleFrom(
                     primary: AppColors.darkBlue, elevation: 0),
                 label: Text(
-                  controller.capitalize(AppTexts.logOut),
+                  capitalize(AppTexts.logOut),
                   style: const TextStyle(color: Colors.red),
                 ),
                 onPressed: () {

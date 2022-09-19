@@ -26,6 +26,7 @@ class GetStartedCardsScrollView extends GetView<GetStartedController> {
               (i) => DelayedDisplay(
                 delay: delay,
                 child: GetStartedCard(
+                  id: handledCardsList[i].id,
                   text: handledCardsList[i].title,
                   description: handledCardsList[i].description,
                 ),

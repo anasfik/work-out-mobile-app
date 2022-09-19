@@ -1,11 +1,13 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class GetStartedController extends GetxController {
+
+  
 // Variables
   bool isTappedDown = false;
   bool isChecked = false;
-
+  late int id;
+  bool? previousIsChecked;
   void panDownMethod() {
     isTappedDown = true;
     update();
@@ -17,7 +19,13 @@ class GetStartedController extends GetxController {
   }
 
   void toggleIsChecked() {
+    previousIsChecked = isChecked;
+
     isChecked = !isChecked;
-    update();
+    update(
+      [id],
+      previousIsChecked != isChecked,
+    );
   }
+
 }

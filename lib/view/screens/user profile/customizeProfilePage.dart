@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:work_out/controller/functionsController.dart';
 import '../../../controller/userProfileOptions/userProfileOptionsController.dart';
+import '../../../helpers/string_methods.dart';
 import 'components/appBar.dart';
 
 class CustomProfileSettings extends StatelessWidget {
@@ -29,19 +30,20 @@ class CustomProfileSettings extends StatelessWidget {
             ...List.generate(
               userProfileOptionsController.userProfileOptionsList.length,
               (i) => DelayedDisplay(
-                delay: Duration(milliseconds: controller.delay + 100 * i),
+                delay: Duration(milliseconds: delay + 100 * i),
                 child: Container(
                   decoration: BoxDecoration(
                       color: Get.arguments[1],
                       borderRadius: BorderRadius.circular(10)),
                   margin: const EdgeInsets.symmetric(vertical: 10),
-                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                   child: InkWell(
                     onTap: userProfileOptionsController
                         .userProfileOptionsList[i]["optionFunction"],
                     child: ListTile(
                       title: Text(
-                        controller.capitalize(userProfileOptionsController
+                        capitalize(userProfileOptionsController
                             .userProfileOptionsList[i]["optionTitle"]),
                         textAlign: TextAlign.center,
                         style: TextStyle(

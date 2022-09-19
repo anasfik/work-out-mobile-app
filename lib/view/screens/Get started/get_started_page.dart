@@ -3,17 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:work_out/config/Colors.dart';
 import 'package:work_out/config/text.dart';
+import 'package:work_out/controller/get_started_controller/get_started_controller.dart';
 import 'package:work_out/view/components/general%20componenets/screen_background_image.dart';
 import 'package:work_out/view/screens/auth/SignUpPage.dart';
 import '../../../controller/functionsController.dart';
 import '../../../config/getStarted/getStartedData.dart';
 import '../../../config/show_delay_mixin.dart';
+import '../../../helpers/string_methods.dart';
 import '../../components/general componenets/mainScreenTitle.dart';
 import '../../components/general componenets/titleWithDescription.dart';
-import 'componenets/GetStartedCard.dart';
 import 'componenets/get_started_cards_scroll_view.dart';
 
-class GetStartedPage extends GetView<FunctionsController>
+class GetStartedPage extends GetView<GetStartedController>
     with DelayHelperMixin {
   GetStartedPage({Key? key}) : super(key: key);
 
@@ -50,7 +51,8 @@ class GetStartedPage extends GetView<FunctionsController>
                     child: DelayedDisplay(
                       delay: getDelayDuration(),
                       child: TitleWithDescription(
-                        title: controller.capitalize(AppTexts.aboutYou),
+                        title: 
+                            capitalize(AppTexts.aboutYou),
                         description: AppTexts.getStartedDescription,
                       ),
                     ),
@@ -82,7 +84,7 @@ class GetStartedPage extends GetView<FunctionsController>
                         children: [
                           GestureDetector(
                             child: Text(
-                              controller.capitalize(AppTexts.skipIntro),
+                              capitalize(AppTexts.skipIntro),
                               style: TextStyle(
                                 color:
                                     const Color(0xffffffff).withOpacity(0.42),
@@ -115,8 +117,7 @@ class GetStartedPage extends GetView<FunctionsController>
                                   onPressed: () {
                                     Get.to(SignUpPage());
                                   },
-                                  child: Text(
-                                      controller.capitalize(AppTexts.next),
+                                  child: Text(capitalize(AppTexts.next),
                                       style:
                                           const TextStyle(color: Colors.white)),
                                 ),

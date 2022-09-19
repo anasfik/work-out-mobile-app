@@ -49,8 +49,8 @@ class ForgotPasswordPage extends StatelessWidget {
                   DelayedDisplay(
                     delay: Duration(milliseconds: controller.delay + 100),
                     child: TitleWithDescription(
-                      title: controller.capitalize(AppTexts.forgot),
-                      description: controller.capitalize(
+                      title: capitalize(AppTexts.forgot),
+                      description: capitalize(
                           AppTexts.forgotPasswordDesccription.toLowerCase()),
                     ),
                   ),
@@ -61,7 +61,7 @@ class ForgotPasswordPage extends StatelessWidget {
                       controller:
                           forgotPasswordController.emailToRecoverPassword,
                       keyboardType: TextInputType.emailAddress,
-                      label: controller.capitalize(AppTexts.yourEmail),
+                      label: capitalize(AppTexts.yourEmail),
                     ),
                   ),
                   const SizedBox(height: 50),
@@ -74,7 +74,7 @@ class ForgotPasswordPage extends StatelessWidget {
                                 .emailToRecoverPassword.text);
                       },
                       isRounded: false,
-                      text: controller.capitalize(AppTexts.resetPassword),
+                      text: capitalize(AppTexts.resetPassword),
                       isOutlined: true,
                     ),
                   ),

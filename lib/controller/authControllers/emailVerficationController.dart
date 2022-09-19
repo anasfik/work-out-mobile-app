@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:work_out/controller/functionsController.dart';
 import 'package:work_out/config/text.dart';
 
+import '../../helpers/string_methods.dart';
 import '../../view/screens/homepage/homePage.dart';
 import '../functionsController/dialogsAndLoadingController.dart';
 
@@ -68,7 +69,7 @@ class EmailVerificatioController extends GetxController {
 
       // Show error to user
       dialogsAndLoadingController
-          .showError(controller.capitalize(AppTexts.pleaseVerifyEmail));
+          .showError(capitalize(AppTexts.pleaseVerifyEmail));
     }
   }
 

@@ -4,6 +4,7 @@ import 'package:work_out/controller/functionsController.dart';
 import 'package:work_out/view/screens/homepage/componenets/playButton.dart';
 import 'package:work_out/view/screens/work%20out%20details/componenets/RatingStars.dart';
 
+import '../../../../helpers/string_methods.dart';
 import '../../../components/general componenets/actionButton.dart';
 import '../../work out details/workOutDetails.dart';
 
@@ -49,7 +50,7 @@ class MainWorkoutCard extends StatelessWidget {
         Align(
           alignment: Alignment.centerLeft,
           child: Text(
-            controller.capitalize(sectionTitle!),
+            capitalize(sectionTitle!),
             style: const TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.bold,
@@ -65,7 +66,7 @@ class MainWorkoutCard extends StatelessWidget {
           child: SizedBox(
             width: 250,
             child: Text(
-              controller.capitalize(description!),
+              capitalize(description!),
               style: TextStyle(
                 color: Colors.white.withOpacity(.8),
                 fontWeight: FontWeight.w500,
@@ -136,7 +137,7 @@ class MainWorkoutCard extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          controller.capitalize(cardTitle!),
+                          capitalize(cardTitle!),
                           style: const TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
@@ -165,7 +166,7 @@ class MainWorkoutCard extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: Text(
-                        controller.capitalize("$timeLeft hours"),
+                        capitalize("$timeLeft hours"),
                         style: const TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,

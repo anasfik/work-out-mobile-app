@@ -7,6 +7,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:work_out/controller/functionsController.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:firebase_core/firebase_core.dart' as firebasecore;
+import '../../helpers/string_methods.dart';
 import '../functionsController/dialogsAndLoadingController.dart';
 
 class UserInformationController extends GetxController {
@@ -88,7 +89,7 @@ class UserInformationController extends GetxController {
 
     // Show error if there is no img
     dialogsAndLoadingController.showError(
-      controller.capitalize(
+      capitalize(
         "operation canceled",
       ),
     );
@@ -107,7 +108,7 @@ class UserInformationController extends GetxController {
       return image;
     }
     dialogsAndLoadingController.showError(
-      controller.capitalize(
+      capitalize(
         "operation canceled",
       ),
     );
@@ -155,7 +156,7 @@ class UserInformationController extends GetxController {
 
         // show success msg to user
         dialogsAndLoadingController.showSuccess(
-          controller.capitalize(
+          capitalize(
             "profile image updated successfully",
           ),
         );
@@ -195,7 +196,7 @@ class UserInformationController extends GetxController {
 
       // Show success msg to user
       dialogsAndLoadingController
-          .showSuccess(controller.capitalize("username updates successfully"));
+          .showSuccess(capitalize("username updates successfully"));
     } on FirebaseException catch (e) {
       /// Need more checks
       // Show error to user
@@ -226,7 +227,7 @@ class UserInformationController extends GetxController {
 
       // Show success msg to user
       dialogsAndLoadingController.showSuccess(
-        controller.capitalize(
+        capitalize(
           "email updates successfully",
         ),
       );
@@ -238,7 +239,7 @@ class UserInformationController extends GetxController {
       if (e.code == 'requires-recent-login') {
         dialogsAndLoadingController.showConfirmWithActions(
             "due to safety reasons, you need a recent re-login to your account in order to get permission to change email",
-            controller.capitalize("re-login"), () {
+            capitalize("re-login"), () {
           _auth.signOut();
         });
       } else {
@@ -269,7 +270,7 @@ class UserInformationController extends GetxController {
 
       // Show success msg to user
       dialogsAndLoadingController.showSuccess(
-        controller.capitalize(
+        capitalize(
           "password updates successfully",
         ),
       );
@@ -281,14 +282,14 @@ class UserInformationController extends GetxController {
       if (e.code == 'requires-recent-login') {
         dialogsAndLoadingController.showConfirmWithActions(
             "due to safety reasons, you need a recent re-login to your account in order to get permission to change password",
-            controller.capitalize("re-login"), () {
+            capitalize("re-login"), () {
           _auth.signOut();
         });
       }
       // other checks
       else if (e.code == 'weak-password') {
         dialogsAndLoadingController
-            .showError(controller.capitalize("weak password"));
+            .showError(capitalize("weak password"));
       } else {
         dialogsAndLoadingController.showError(e.toString());
       }
@@ -309,7 +310,7 @@ class UserInformationController extends GetxController {
 
       // show success msg to user
       dialogsAndLoadingController
-          .showSuccess(controller.capitalize("user deleted"));
+          .showSuccess(capitalize("user deleted"));
     } on FirebaseException catch (e) {
       // pop loading
       Get.back();
@@ -318,14 +319,14 @@ class UserInformationController extends GetxController {
       if (e.code == 'requires-recent-login') {
         dialogsAndLoadingController.showConfirmWithActions(
             "due to safety reasons, you need a recent re-login to your account in order to get permission to change password",
-            controller.capitalize("re-login"), () {
+            capitalize("re-login"), () {
           _auth.signOut();
         });
       }
       // Other checks
       else if (e.code == 'weak-password') {
         dialogsAndLoadingController
-            .showError(controller.capitalize("weak password"));
+            .showError(capitalize("weak password"));
       } else {
         dialogsAndLoadingController.showError(e.toString());
       }

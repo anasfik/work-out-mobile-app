@@ -1,4 +1,3 @@
-
 import 'package:delayed_display/delayed_display.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -10,6 +9,7 @@ import 'package:work_out/view/components/general%20componenets/button.dart';
 import '../../../controller/authControllers/signOutController.dart';
 import '../../../controller/userController/userController.dart';
 import '../../../config/UserProfile/userProfil.dart';
+import '../../../helpers/string_methods.dart';
 import 'components/appBar.dart';
 import 'components/stat.dart';
 import 'customizeProfilePage.dart';
@@ -35,7 +35,7 @@ class _UserProfileState extends State<UserProfile> {
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(80),
         child: DelayedDisplay(
-          delay: Duration(milliseconds: controller.delay),
+          delay: Duration(milliseconds: delay),
           child: ProfileAppBar(),
         ),
       ),
@@ -49,7 +49,7 @@ class _UserProfileState extends State<UserProfile> {
             Column(
               children: [
                 DelayedDisplay(
-                  delay: Duration(milliseconds: controller.delay + 100),
+                  delay: Duration(milliseconds: delay + 100),
                   child: SizedBox(
                     width: 120,
                     height: 120,
@@ -84,11 +84,11 @@ class _UserProfileState extends State<UserProfile> {
                   height: 20,
                 ),
                 DelayedDisplay(
-                  delay: Duration(milliseconds: controller.delay + 400),
+                  delay: Duration(milliseconds: delay + 400),
                   child: Obx(
                     () => DelayedDisplay(
                       child: Text(
-                        controller.capitalize(
+                        capitalize(
                           userInformationController.username.value,
                         ),
                         style: const TextStyle(
@@ -104,7 +104,7 @@ class _UserProfileState extends State<UserProfile> {
                   height: 20,
                 ),
                 DelayedDisplay(
-                  delay: Duration(milliseconds: controller.delay + 300),
+                  delay: Duration(milliseconds: delay + 300),
                   child: Container(
                     margin: const EdgeInsets.symmetric(horizontal: 40),
                     child: Text(
@@ -121,16 +121,16 @@ class _UserProfileState extends State<UserProfile> {
                   height: 40,
                 ),
                 DelayedDisplay(
-                  delay: Duration(milliseconds: controller.delay + 400),
+                  delay: Duration(milliseconds: delay + 400),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       ...List.generate(
                         UserProfileStats.stats.length,
                         (i) => Stat(
-                          statValue: controller
-                              .capitalize(UserProfileStats.stats[i]["value"]),
-                          statTitle: controller.capitalize(
+                          statValue: 
+                              capitalize(UserProfileStats.stats[i]["value"]),
+                          statTitle: capitalize(
                             UserProfileStats.stats[i]["title"],
                           ),
                         ),
@@ -144,9 +144,9 @@ class _UserProfileState extends State<UserProfile> {
               flex: 2,
             ),
             DelayedDisplay(
-              delay: Duration(milliseconds: controller.delay + 500),
+              delay: Duration(milliseconds: delay + 500),
               child: CustomButton(
-                  text: controller.capitalize(AppTexts.configureSettings),
+                  text: capitalize(AppTexts.configureSettings),
                   isOutlined: true,
                   onPressed: () {
                     Get.to(() => CustomProfileSettings(), arguments: [

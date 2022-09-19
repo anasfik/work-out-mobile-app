@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:work_out/controller/functionsController.dart';
 import 'package:work_out/config/text.dart';
 import 'package:work_out/view/screens/auth/EmailVerification.dart';
+import '../../helpers/string_methods.dart';
 import '../functionsController/dialogsAndLoadingController.dart';
 
 class additional extends GetxController {
@@ -46,7 +47,7 @@ class additional extends GetxController {
   // Create new account
   newAccount(String email, String password, String username) async {
     // Check validations
-    bool isValidEmail = controller.emailRegExp.hasMatch(email);
+    bool isValidEmail = emailRegExp.hasMatch(email);
     bool isValidPassword = password.length > 4;
     bool isAcceptedUsername = username.length > 4;
 
@@ -88,20 +89,20 @@ class additional extends GetxController {
         // Error checks
         if (e.code == 'network-request-failed') {
           dialogsAndLoadingController.showError(
-            controller.capitalize(
+            capitalize(
               AppTexts.checkConnection,
             ),
           );
         }
         if (e.code == 'weak-password') {
           dialogsAndLoadingController.showError(
-            controller.capitalize(
+            capitalize(
               AppTexts.weakPassword,
             ),
           );
         } else if (e.code == 'email-already-in-use') {
           dialogsAndLoadingController.showError(
-            controller.capitalize(
+            capitalize(
               AppTexts.emailAlreadyInUse,
             ),
           );
@@ -111,7 +112,7 @@ class additional extends GetxController {
       //
       catch (e) {
         dialogsAndLoadingController.showError(
-          controller.capitalize(
+          capitalize(
             e as String,
           ),
         );
@@ -121,25 +122,25 @@ class additional extends GetxController {
     // Now, if something is'nt valid, inform user about it
     if (username == "" || email.isEmpty || password == "") {
       dialogsAndLoadingController.showError(
-        controller.capitalize(
+        capitalize(
           AppTexts.fillFields,
         ),
       );
     } else if (!isAcceptedUsername) {
       dialogsAndLoadingController.showError(
-        controller.capitalize(
+        capitalize(
           AppTexts.usernameMustBe5AtLeast,
         ),
       );
     } else if (!isValidEmail) {
       dialogsAndLoadingController.showError(
-        controller.capitalize(
+        capitalize(
           AppTexts.invalidEmail,
         ),
       );
     } else if (!isValidPassword) {
       dialogsAndLoadingController.showError(
-        controller.capitalize(
+        capitalize(
           AppTexts.passwordMustBe5AtLeast,
         ),
       );

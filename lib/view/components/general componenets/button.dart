@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:work_out/controller/functionsController.dart';
 
+import '../../../helpers/string_methods.dart';
+
 class CustomButton extends StatelessWidget {
   CustomButton({
     Key? key,
@@ -21,7 +23,7 @@ class CustomButton extends StatelessWidget {
         init: FunctionsController(),
         builder: (controller) {
           return Transform.scale(
-            scale: 1 * controller.btnScaleValue,
+            scale: 1 * btnScaleValue,
             child: SizedBox(
               width: double.infinity,
               height: 55,

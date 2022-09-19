@@ -4,6 +4,7 @@ import 'package:work_out/controller/functionsController.dart';
 import 'package:work_out/config/images%20sources.dart';
 
 import '../../../../config/text.dart';
+import '../../../../helpers/string_methods.dart';
 import '../../workoutsPages/AllWorkoutsPage.dart';
 import 'WorkOutCard.dart';
 
@@ -47,13 +48,14 @@ class TabBarViewSection extends StatelessWidget {
                 visible: hasSeeAllButton,
                 child: Container(
                   margin: const EdgeInsets.only(right: 5),
-                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
                     color: Colors.white.withOpacity(.1),
                   ),
                   child: Text(
-                    controller.capitalize(AppTexts.seeAll),
+                    capitalize(AppTexts.seeAll),
                     style: TextStyle(color: Theme.of(context).primaryColor),
                   ),
                 ),
@@ -74,11 +76,12 @@ class TabBarViewSection extends StatelessWidget {
                 (index) => WorkOutCard(
                     index: index,
                     listCollection: dataList,
-                    title: controller.capitalize(
-                      dataList[index]["workOutTitle"] ?? AppTexts.somethingWrong,
+                    title: capitalize(
+                      dataList[index]["workOutTitle"] ??
+                          AppTexts.somethingWrong,
                     ),
-                    imagePath: dataList[index]["imagePath"] ??
-                        ImgSrc.noImgAvailable),
+                    imagePath:
+                        dataList[index]["imagePath"] ?? ImgSrc.noImgAvailable),
               )
             ],
           ),

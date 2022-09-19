@@ -73,7 +73,7 @@ class LoginPage extends StatelessWidget {
                       DelayedDisplay(
                         delay: delayHelper.getDelayDuration(),
                         child: TitleWithDescription(
-                          title: controller.capitalize(AppTexts.signIn),
+                          title: capitalize(AppTexts.signIn),
                           description: AppTexts.loginDescription,
                         ),
                       ),
@@ -85,7 +85,7 @@ class LoginPage extends StatelessWidget {
                         child: CustomTextField(
                           keyboardType: TextInputType.emailAddress,
                           controller: loginController.loginEmailController,
-                          label: controller.capitalize(AppTexts.email),
+                          label: capitalize(AppTexts.email),
                         ),
                       ),
                       DelayedDisplay(
@@ -93,7 +93,7 @@ class LoginPage extends StatelessWidget {
                         child: CustomTextField(
                           keyboardType: TextInputType.visiblePassword,
                           controller: loginController.loginPasswordController,
-                          label: controller.capitalize(AppTexts.password),
+                          label: capitalize(AppTexts.password),
                           obscureText: true,
                         ),
                       ),
@@ -108,7 +108,7 @@ class LoginPage extends StatelessWidget {
                                 Get.to(() => ForgotPasswordPage());
                               },
                               child: Text(
-                                controller.capitalize(
+                                capitalize(
                                   AppTexts.forgetPassword,
                                 ),
                                 style: const TextStyle(
@@ -136,7 +136,7 @@ class LoginPage extends StatelessWidget {
                                 );
                               },
                               isRounded: false,
-                              text: controller.capitalize(AppTexts.login),
+                              text: capitalize(AppTexts.login),
                               isOutlined: false,
                             ),
                           ),
@@ -150,7 +150,7 @@ class LoginPage extends StatelessWidget {
                                 Get.to(() => SignUpPage());
                               },
                               isRounded: false,
-                              text: controller.capitalize(AppTexts.signUp),
+                              text: capitalize(AppTexts.signUp),
                               isOutlined: true,
                             ),
                           ),

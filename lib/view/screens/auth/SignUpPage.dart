@@ -67,7 +67,7 @@ class SignUpPage extends StatelessWidget {
                       DelayedDisplay(
                         delay: delayHelper.getDelayDuration(),
                         child: TitleWithDescription(
-                          title: controller.capitalize(AppTexts.signUp),
+                          title: capitalize(AppTexts.signUp),
                           description: AppTexts.signUpDescription,
                         ),
                       ),
@@ -76,7 +76,7 @@ class SignUpPage extends StatelessWidget {
                         child: CustomTextField(
                           keyboardType: TextInputType.name,
                           controller: signUpController.signUpUserController,
-                          label: controller.capitalize(AppTexts.username),
+                          label: capitalize(AppTexts.username),
                         ),
                       ),
                       DelayedDisplay(
@@ -84,7 +84,7 @@ class SignUpPage extends StatelessWidget {
                         child: CustomTextField(
                           keyboardType: TextInputType.emailAddress,
                           controller: signUpController.signUpEmailController,
-                          label: controller.capitalize(AppTexts.email),
+                          label: capitalize(AppTexts.email),
                         ),
                       ),
                       DelayedDisplay(
@@ -92,7 +92,7 @@ class SignUpPage extends StatelessWidget {
                         child: CustomTextField(
                           keyboardType: TextInputType.text,
                           controller: signUpController.signUpPasswordController,
-                          label: controller.capitalize(AppTexts.password),
+                          label: capitalize(AppTexts.password),
                           obscureText: true,
                         ),
                       ),
@@ -113,7 +113,7 @@ class SignUpPage extends StatelessWidget {
                                 );
                               },
                               isRounded: false,
-                              text: controller.capitalize(AppTexts.signUp),
+                              text: capitalize(AppTexts.signUp),
                               isOutlined: true,
                             ),
                           ),

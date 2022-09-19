@@ -4,25 +4,29 @@ import 'package:work_out/controller/functionsController.dart';
 import 'package:work_out/config/Colors.dart';
 
 import '../../../../controller/get_started_controller/get_started_controller.dart';
+import '../../../../helpers/string_methods.dart';
 import '../../../components/general componenets/CheckMark.dart';
 import 'IamTitle.dart';
 
 class GetStartedCard extends GetWidget<GetStartedController> {
-  GetStartedCard({
-    super.key,
-    required this.text,
-    required this.description,
-    this.isChecked = false,
-  });
+  const GetStartedCard(
+      {super.key,
+      required this.text,
+      required this.description,
+      required this.id});
 
   final String text, description;
-  bool isChecked;
-
+  final int id;
   @override
   Widget build(BuildContext context) {
     return GetBuilder<GetStartedController>(
+      initState: (state) {
+        controller.id = id;
+        print(controller.id);
+      },
       global: false,
-      init: GetStartedController(),
+      id: id,
+      // init: GetStartedController(),
       builder: (controller) {
         return GestureDetector(
           onPanDown: (details) {
@@ -60,7 +64,7 @@ class GetStartedCard extends GetWidget<GetStartedController> {
                 Align(
                   alignment: Alignment.centerLeft,
                   child: IamTitle(
-                    text: Get.find<FunctionsController>().capitalize(text),
+                    text: capitalize(text),
                   ),
                 ),
                 const SizedBox(

@@ -8,6 +8,7 @@ import 'package:work_out/view/components/general%20componenets/titleWithDescript
 import 'package:work_out/view/screens/toggle%20laungage/chooseLaungagePage.dart';
 import '../../../controller/functionsController.dart';
 import '../../../config/show_delay_mixin.dart';
+import '../../../helpers/string_methods.dart';
 import '../../components/general componenets/button.dart';
 import '../../components/general componenets/mainScreenTitle.dart';
 import '../../components/general componenets/screen_background_image.dart';
@@ -25,8 +26,7 @@ class WelcomePage extends GetView<FunctionsController> with DelayHelperMixin {
             backgroundImage: ImgSrc().randomFromAssetsList(),
           ),
           Container(
-       
-            color: AppColors.darkBlue.withOpacity(0.69),      // Nice
+            color: AppColors.darkBlue.withOpacity(0.69), // Nice
             width: double.infinity,
             child: Container(
               margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
@@ -50,7 +50,7 @@ class WelcomePage extends GetView<FunctionsController> with DelayHelperMixin {
                   DelayedDisplay(
                     delay: getDelayDuration(),
                     child: TitleWithDescription(
-                      title: controller.capitalize(AppTexts.welcome),
+                      title: capitalize(AppTexts.welcome),
                       description: AppTexts.welcomeDescription,
                     ),
                   ),
@@ -68,7 +68,7 @@ class WelcomePage extends GetView<FunctionsController> with DelayHelperMixin {
                           onPressed: () {
                             Get.toNamed("/get_started");
                           },
-                          text: controller.capitalize(AppTexts.getStarted),
+                          text: capitalize(AppTexts.getStarted),
                           isOutlined: false,
                         ),
                       ),
@@ -82,7 +82,7 @@ class WelcomePage extends GetView<FunctionsController> with DelayHelperMixin {
                           onPressed: () {
                             Get.toNamed("/login");
                           },
-                          text: controller.capitalize(AppTexts.login),
+                          text: capitalize(AppTexts.login),
                           isOutlined: true,
                         ),
                       ),

@@ -5,6 +5,8 @@ import 'package:work_out/controller/functionsController.dart';
 import 'package:work_out/controller/functionsController/dialogsAndLoadingController.dart';
 import 'package:work_out/config/text.dart';
 
+import '../../helpers/string_methods.dart';
+
 class ForgotPasswordController extends GetxController {
   // Dependency injection
   FunctionsController controller = Get.put(FunctionsController());
@@ -17,7 +19,7 @@ class ForgotPasswordController extends GetxController {
   // Recover password method
   recoverPassword(String email) async {
     // Check if the email is valid
-    bool isValidEmail = controller.emailRegExp.hasMatch(email);
+    bool isValidEmail = emailRegExp.hasMatch(email);
 
     // if it's valid then
 
@@ -35,7 +37,7 @@ class ForgotPasswordController extends GetxController {
 
         // Show success to user
         dialogsAndLoadingController
-            .showSuccess(controller.capitalize(AppTexts.emailVerifSentText));
+            .showSuccess(capitalize(AppTexts.emailVerifSentText));
 
         //
       } on FirebaseAuthException catch (e) {
@@ -45,7 +47,7 @@ class ForgotPasswordController extends GetxController {
         // Error checks (if you want to be more specific make for each error a case) on this pattern
         if (e.code == "user-not-found") {
           dialogsAndLoadingController
-              .showError(controller.capitalize(AppTexts.noUserText));
+              .showError(capitalize(AppTexts.noUserText));
         }
         // here your checks
         else {
@@ -60,10 +62,10 @@ class ForgotPasswordController extends GetxController {
     // email checks ()
     else if (email == "") {
       dialogsAndLoadingController
-          .showError(controller.capitalize(AppTexts.enterEmail));
+          .showError(capitalize(AppTexts.enterEmail));
     } else if (!isValidEmail) {
       dialogsAndLoadingController
-          .showError(controller.capitalize(AppTexts.enterValidEmail));
+          .showError(capitalize(AppTexts.enterValidEmail));
     }
   }
 

@@ -8,6 +8,7 @@ import '../../../controller/tabs controllers/detailsTabController.dart';
 import '../../../config/Colors.dart';
 import '../../../config/text.dart';
 
+import '../../../helpers/string_methods.dart';
 import '../../components/general componenets/actionButton.dart';
 import 'componenets/RatingStars.dart';
 import '../../components/general componenets/button.dart';
@@ -84,7 +85,7 @@ class WorkOutDetails extends StatelessWidget {
                   height: 40,
                 ),
                 DelayedDisplay(
-                  delay: Duration(milliseconds: _controller.delay + 100),
+                  delay: Duration(milliseconds: delay + 100),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -122,7 +123,7 @@ class WorkOutDetails extends StatelessWidget {
                 const Spacer(),
                 Center(
                   child: DelayedDisplay(
-                    delay: Duration(milliseconds: _controller.delay + 200),
+                    delay: Duration(milliseconds: delay + 200),
                     child: Container(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 20, vertical: 15),
@@ -193,9 +194,9 @@ class WorkOutDetails extends StatelessWidget {
                   height: 20,
                 ),
                 DelayedDisplay(
-                  delay: Duration(milliseconds: _controller.delay + 300),
+                  delay: Duration(milliseconds: delay + 300),
                   child: Text(
-                    _controller.capitalize(workOutTitle),
+                    capitalize(workOutTitle),
                     style: const TextStyle(
                       fontSize: 25,
                       fontWeight: FontWeight.bold,
@@ -207,7 +208,7 @@ class WorkOutDetails extends StatelessWidget {
                   height: 5,
                 ),
                 DelayedDisplay(
-                  delay: Duration(milliseconds: _controller.delay + 400),
+                  delay: Duration(milliseconds: delay + 400),
                   child: RatingStars(
                     starsNumber: 5,
                     filledStars: int.parse(rating != null ? rating : "0"),
@@ -217,7 +218,7 @@ class WorkOutDetails extends StatelessWidget {
                   height: 30,
                 ),
                 DelayedDisplay(
-                  delay: Duration(milliseconds: _controller.delay + 500),
+                  delay: Duration(milliseconds: delay + 500),
                   child: SizedBox(
                     height: 30,
                     child: TabBar(
@@ -232,7 +233,7 @@ class WorkOutDetails extends StatelessWidget {
                 SizedBox(
                   height: 100,
                   child: DelayedDisplay(
-                    delay: Duration(milliseconds: _controller.delay + 600),
+                    delay: Duration(milliseconds: delay + 600),
                     child: TabBarView(
                       controller: _tabx.detailsTabController,
                       children: [
@@ -273,24 +274,24 @@ class WorkOutDetails extends StatelessWidget {
                 Column(
                   children: [
                     DelayedDisplay(
-                      delay: Duration(milliseconds: _controller.delay + 700),
+                      delay: Duration(milliseconds: delay + 700),
                       child: CustomButton(
                         onPressed: () {},
                         isRounded: false,
-                        text: _controller.capitalize("\$ $priceInDollars"),
+                        text: capitalize("\$ $priceInDollars"),
                         isOutlined: false,
                       ),
                     ),
                     const SizedBox(height: 10),
                     DelayedDisplay(
-                      delay: Duration(milliseconds: _controller.delay + 800),
+                      delay: Duration(milliseconds: delay + 800),
                       child: CustomButton(
                         onPressed: () {},
                         isRounded: false,
                         text: hasFreeTrial.toLowerCase() == "true"
-                            ? _controller.capitalize(AppTexts.freeTrial)
-                            : _controller
-                                .capitalize(AppTexts.noFreeTrialAvailable),
+                            ? capitalize(AppTexts.freeTrial)
+                            : 
+                                capitalize(AppTexts.noFreeTrialAvailable),
                         isOutlined: true,
                       ),
                     ),

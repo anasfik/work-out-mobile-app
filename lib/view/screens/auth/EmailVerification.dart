@@ -15,7 +15,7 @@ class EmailVerificatioPage extends StatelessWidget {
   final EmailVerificatioController emailVerificatioController =
       Get.put(EmailVerificatioController());
   final SignOutController signOutController = Get.put(SignOutController());
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -68,7 +68,7 @@ class EmailVerificatioPage extends StatelessWidget {
               ),
               const Spacer(),
               CustomButton(
-                  text: controller.capitalize(AppTexts.done),
+                  text: capitalize(AppTexts.done),
                   isOutlined: false,
                   onPressed: () {
                     emailVerificatioController.checkEmailVerified();
@@ -81,7 +81,7 @@ class EmailVerificatioPage extends StatelessWidget {
                   emailVerificatioController.sendVerificationEmail();
                 },
                 child: Text(
-                  controller.capitalize(AppTexts.reSendEmailVerification),
+                  capitalize(AppTexts.reSendEmailVerification),
                   style: TextStyle(
                       decoration: TextDecoration.underline,
                       color: Theme.of(context).primaryColor),

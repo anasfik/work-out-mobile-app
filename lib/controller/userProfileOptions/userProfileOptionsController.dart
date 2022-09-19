@@ -6,6 +6,7 @@ import 'package:work_out/controller/functionsController.dart';
 import 'package:work_out/view/components/general%20componenets/button.dart';
 import 'package:work_out/view/components/general%20componenets/text%20field.dart';
 
+import '../../helpers/string_methods.dart';
 import '../functionsController/dialogsAndLoadingController.dart';
 import '../userController/userController.dart';
 
@@ -34,13 +35,13 @@ class UserProfileOptionsController extends GetxController {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 CustomTextField(
-                    label: controller.capitalize("new username"),
+                    label: capitalize("new username"),
                     controller: newUserNameController,
                     keyboardType: TextInputType.text),
                 SizedBox(
                   height: 50,
                   child: CustomButton(
-                      text: controller.capitalize("update"),
+                      text: capitalize("update"),
                       isOutlined: false,
                       onPressed: () {
                         Get.back();
@@ -69,7 +70,7 @@ class UserProfileOptionsController extends GetxController {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    controller.capitalize("Select an image"),
+                    capitalize("Select an image"),
                     style: TextStyle(color: Colors.white, fontSize: 20),
                   ),
                   Row(
@@ -121,13 +122,13 @@ class UserProfileOptionsController extends GetxController {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   CustomTextField(
-                      label: controller.capitalize("new email"),
+                      label: capitalize("new email"),
                       controller: newEmailController,
                       keyboardType: TextInputType.text),
                   SizedBox(
                     height: 50,
                     child: CustomButton(
-                        text: controller.capitalize("update"),
+                        text: capitalize("update"),
                         isOutlined: false,
                         onPressed: () async {
                           Get.back();
@@ -157,13 +158,13 @@ class UserProfileOptionsController extends GetxController {
                 children: [
                   CustomTextField(
                       obscureText: true,
-                      label: controller.capitalize("new password"),
+                      label: capitalize("new password"),
                       controller: newPasswordController,
                       keyboardType: TextInputType.visiblePassword),
                   SizedBox(
                     height: 50,
                     child: CustomButton(
-                        text: controller.capitalize("update"),
+                        text: capitalize("update"),
                         isOutlined: false,
                         onPressed: () async {
                           Get.back();
@@ -182,9 +183,9 @@ class UserProfileOptionsController extends GetxController {
       "optionIcon": Icons.delete,
       "optionFunction": () {
         dialogsAndLoadingController.showConfirmWithActions(
-          controller
-              .capitalize("are you sure you want to delete your account ?"),
-          controller.capitalize("delete"),
+          
+            capitalize("are you sure you want to delete your account ?"),
+          capitalize("delete"),
           () {
             Get.back();
             userInformationController.deleteUser();

@@ -7,6 +7,7 @@ import 'package:work_out/config/text.dart';
 import 'package:work_out/view/screens/homepage/componenets/avatar.dart';
 import '../../../controller/userController/userController.dart';
 import '../../../config/workouts lists/workouts Lists.dart';
+import '../../../helpers/string_methods.dart';
 import '../homepage/componenets/tabBarViewSections.dart';
 import '../user profile/userProfil.dart';
 import 'components/mainWorkoutCard.dart';
@@ -24,18 +25,20 @@ class AllWorkoutsPage extends StatelessWidget {
         preferredSize: const Size.fromHeight(80),
         child: DelayedDisplay(
           slidingBeginOffset: const Offset(0.0, 0.1),
-          delay: Duration(milliseconds: controller.delay),
+          delay: Duration(milliseconds: delay),
           child: AppBar(
             actions: [
               Container(
-                margin: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+                margin:
+                    const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
                 child: AspectRatio(
                   aspectRatio: 1,
                   child: Avatar(
                     onProfileImgTap: () {
                       Get.to(() => const UserProfile());
                     },
-                    networkImage:userInformationController.userProfileImg.value,
+                    networkImage:
+                        userInformationController.userProfileImg.value,
                   ),
                 ),
               ),
@@ -65,7 +68,7 @@ class AllWorkoutsPage extends StatelessWidget {
               height: 40,
             ),
             DelayedDisplay(
-              delay: Duration(milliseconds: controller.delay + 100),
+              delay: Duration(milliseconds: delay + 100),
               slidingBeginOffset: const Offset(0.0, 0.1),
               child: MainWorkoutCard(
                 isFavortite: false,
@@ -102,10 +105,10 @@ class AllWorkoutsPage extends StatelessWidget {
             ),
             DelayedDisplay(
               slidingBeginOffset: const Offset(0.0, 0.1),
-              delay: Duration(milliseconds: controller.delay + 100),
+              delay: Duration(milliseconds: delay + 100),
               child: TabBarViewSection(
                 itemsToShow: WorkoutsList.allWorkoutsList.length,
-                title: controller.capitalize(
+                title: capitalize(
                   AppTexts.withDiscounts,
                 ),
                 dataList: controller.filteredListwith(
@@ -118,7 +121,7 @@ class AllWorkoutsPage extends StatelessWidget {
             ),
             DelayedDisplay(
               slidingBeginOffset: const Offset(0.0, 0.1),
-              delay: Duration(milliseconds: controller.delay + 200),
+              delay: Duration(milliseconds: delay + 200),
               child: MainWorkoutCard(
                 isFavortite: false,
                 sectionTitle: AppTexts.dailyFreeWorkout,
@@ -154,10 +157,10 @@ class AllWorkoutsPage extends StatelessWidget {
             ),
             DelayedDisplay(
               slidingBeginOffset: const Offset(0.0, 0.1),
-              delay: Duration(milliseconds: controller.delay + 300),
+              delay: Duration(milliseconds: delay + 300),
               child: TabBarViewSection(
                 itemsToShow: WorkoutsList.allWorkoutsList.length,
-                title: controller.capitalize(
+                title: capitalize(
                   AppTexts.allWorkouts,
                 ),
                 dataList: Get.arguments[1],

@@ -10,6 +10,7 @@ import '../../../controller/functionsController.dart';
 import '../../../controller/tabs controllers/workOutTabController.dart';
 import '../../../controller/userController/userController.dart';
 import '../../../config/images sources.dart';
+import '../../../helpers/string_methods.dart';
 import '../../components/general componenets/screen_background_image.dart';
 import 'componenets/HomePageSearchBar.dart';
 import 'componenets/ItemsSwitchTiles.dart';
@@ -77,7 +78,7 @@ class _HomePageState extends State<HomePage> {
                         onProfileImgTap: () {
                           Get.to(() => const UserProfile());
                         },
-                        username: controller.capitalize(
+                        username: capitalize(
                           userInformationController.username.value,
                         ),
                         profileImg:
@@ -88,14 +89,14 @@ class _HomePageState extends State<HomePage> {
                       height: 55,
                     ),
                     DelayedDisplay(
-                      delay: Duration(milliseconds: controller.delay + 100),
+                      delay: Duration(milliseconds: delay + 100),
                       child: PlayButton(),
                     ),
                     const SizedBox(
                       height: 55,
                     ),
                     DelayedDisplay(
-                      delay: Duration(milliseconds: controller.delay + 200),
+                      delay: Duration(milliseconds: delay + 200),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -119,7 +120,7 @@ class _HomePageState extends State<HomePage> {
                     SizedBox(
                       height: 45,
                       child: DelayedDisplay(
-                        delay: Duration(milliseconds: controller.delay + 300),
+                        delay: Duration(milliseconds: delay + 300),
                         child: const HomePageSearchBar(),
                       ),
                     ),
@@ -130,7 +131,7 @@ class _HomePageState extends State<HomePage> {
                       height: 40,
                       child: DelayedDisplay(
                         delay: Duration(
-                          milliseconds: controller.delay + 400,
+                          milliseconds: delay + 400,
                         ),
                         child: TabBar(
                           labelColor: Colors.white,
@@ -149,13 +150,13 @@ class _HomePageState extends State<HomePage> {
                     ),
                     Expanded(
                       child: DelayedDisplay(
-                        delay: Duration(milliseconds: controller.delay + 600),
+                        delay: Duration(milliseconds: delay + 600),
                         child: TabBarView(
                           controller: _tabx.workOutTabController,
                           children: [
                             Center(
                               child: TabBarViewSection(
-                                title: controller.capitalize(
+                                title: capitalize(
                                   'All workouts',
                                 ),
                                 dataList: WorkoutsList.allWorkoutsList,
@@ -163,7 +164,7 @@ class _HomePageState extends State<HomePage> {
                             ),
                             Center(
                               child: TabBarViewSection(
-                                title: controller.capitalize(
+                                title: capitalize(
                                   'Popular',
                                 ),
                                 dataList: WorkoutsList.popularWorkoutsList,
@@ -171,21 +172,21 @@ class _HomePageState extends State<HomePage> {
                             ),
                             Center(
                               child: TabBarViewSection(
-                                  title: controller.capitalize(
+                                  title: capitalize(
                                     'hard',
                                   ),
                                   dataList: WorkoutsList.hardWorkoutsList),
                             ),
                             Center(
                               child: TabBarViewSection(
-                                  title: controller.capitalize(
+                                  title: capitalize(
                                     'Full body',
                                   ),
                                   dataList: WorkoutsList.fullBodyWorkoutsList),
                             ),
                             Center(
                               child: TabBarViewSection(
-                                  title: controller.capitalize(
+                                  title: capitalize(
                                     'Crossfit',
                                   ),
                                   dataList: WorkoutsList.crossFit),

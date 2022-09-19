@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:work_out/controller/functionsController.dart';
 import 'package:work_out/config/text.dart';
 
+import '../../helpers/string_methods.dart';
 import '../functionsController/dialogsAndLoadingController.dart';
 
 class LoginController extends GetxController {
@@ -19,7 +20,7 @@ class LoginController extends GetxController {
   // Authenticate with firebase email/password method
   loginWithAccount(String email, String password) async {
     // Validation booleans
-    bool isValidEmail = controller.emailRegExp.hasMatch(email);
+    bool isValidEmail = emailRegExp.hasMatch(email);
     bool isValidPassword = password.length >= 5;
 
     // Check first if they are valid to login directly
@@ -41,13 +42,13 @@ class LoginController extends GetxController {
         // Errors checks (if you want to be more specific make for each error a case) on this pattern
         if (e.code == 'network-request-failed') {
           dialogsAndLoadingController
-              .showError(controller.capitalize(AppTexts.checkConnection));
+              .showError(capitalize(AppTexts.checkConnection));
         }
         if (e.code == 'user-not-found') {
           dialogsAndLoadingController.showError(AppTexts.noUserText);
         } else if (e.code == 'wrong-password') {
           dialogsAndLoadingController
-              .showError(controller.capitalize(AppTexts.wrongPassword));
+              .showError(capitalize(AppTexts.wrongPassword));
         } else {
           dialogsAndLoadingController.showError(e.code);
         }
@@ -58,25 +59,25 @@ class LoginController extends GetxController {
     // it describe itself
     if (email.isEmpty) {
       dialogsAndLoadingController.showError(
-        controller.capitalize(AppTexts.enterEmail),
+        capitalize(AppTexts.enterEmail),
       );
     }
     //
     else if (!isValidEmail) {
       dialogsAndLoadingController.showError(
-        controller.capitalize(AppTexts.invalidEmail),
+        capitalize(AppTexts.invalidEmail),
       );
     }
     //
     else if (password.isEmpty) {
       dialogsAndLoadingController.showError(
-        controller.capitalize(AppTexts.enterPassword),
+        capitalize(AppTexts.enterPassword),
       );
     }
     //
     else if (!isValidPassword) {
       dialogsAndLoadingController.showError(
-        controller.capitalize(AppTexts.passwordMustBe5AtLeast),
+        capitalize(AppTexts.passwordMustBe5AtLeast),
       );
     }
   }
