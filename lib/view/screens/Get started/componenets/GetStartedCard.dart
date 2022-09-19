@@ -3,12 +3,12 @@ import 'package:get/get.dart';
 import 'package:work_out/controller/functionsController.dart';
 import 'package:work_out/config/Colors.dart';
 
-import '../../../../controller/get_started_controller/get_started_controller.dart';
+import '../../../../controller/get_started_controller/get_started_card_controller.dart';
 import '../../../../helpers/string_methods.dart';
 import '../../../components/general componenets/CheckMark.dart';
 import 'IamTitle.dart';
 
-class GetStartedCard extends GetView<GetStartedController> {
+class GetStartedCard extends GetView<GetStartedCardController> {
   const GetStartedCard({
     super.key,
     required this.text,
@@ -20,8 +20,8 @@ class GetStartedCard extends GetView<GetStartedController> {
   final int id;
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<GetStartedController>(
-      init: GetStartedController(),
+    return GetBuilder<GetStartedCardController>(
+      init: GetStartedCardController(),
   
       global: false,
       builder: (controller) {
