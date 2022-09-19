@@ -4,7 +4,7 @@ import 'package:work_out/view/screens/welcome/welcome_page.dart';
 import '../bindings/get_started_binding.dart';
 import '../bindings/login_binding.dart';
 import '../bindings/welcome_binding.dart';
-import '../view/screens/Get started/GetStartedPage.dart';
+import '../view/screens/Get started/get_started_page.dart';
 import '../view/screens/auth/loginPage.dart';
 
 // To-do: add routes to all screens, ad make the change over the screens

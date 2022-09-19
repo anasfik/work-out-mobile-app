@@ -2,7 +2,6 @@ import 'package:delayed_display/delayed_display.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:work_out/config/Colors.dart';
-import 'package:work_out/config/images%20sources.dart';
 import 'package:work_out/config/text.dart';
 import 'package:work_out/view/components/general%20componenets/screen_background_image.dart';
 import 'package:work_out/view/screens/auth/SignUpPage.dart';
@@ -13,11 +12,9 @@ import '../../components/general componenets/mainScreenTitle.dart';
 import '../../components/general componenets/titleWithDescription.dart';
 import 'componenets/GetStartedCard.dart';
 
-class GetStartedPage extends GetView<FunctionsController> {
+class GetStartedPage extends GetView<FunctionsController>
+    with DelayHelperMixin {
   GetStartedPage({Key? key}) : super(key: key);
-
-  //
-  final delayHelper = DelayHelper();
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +35,7 @@ class GetStartedPage extends GetView<FunctionsController> {
                 children: [
                   const Spacer(),
                   DelayedDisplay(
-                    delay: delayHelper.getDelayDuration(),
+                    delay: getDelayDuration(),
                     child: MainScreenTitle(
                       mainWord: AppTexts.firstMainWord,
                       secondaryWord: AppTexts.secondaryMainWord,
@@ -50,7 +47,7 @@ class GetStartedPage extends GetView<FunctionsController> {
                   Container(
                     margin: const EdgeInsets.only(left: 20),
                     child: DelayedDisplay(
-                      delay: delayHelper.getDelayDuration(),
+                      delay: getDelayDuration(),
                       child: TitleWithDescription(
                         title: controller.capitalize(AppTexts.aboutYou),
                         description: AppTexts.getStartedDescription,
@@ -78,7 +75,7 @@ class GetStartedPage extends GetView<FunctionsController> {
                             ...List.generate(
                               cardsList.length,
                               (i) => DelayedDisplay(
-                                delay: delayHelper.getDelayDuration(),
+                                delay: getDelayDuration(),
                                 child: GetStartedCard(
                                   text: cardsList[i]["title"],
                                   description: cardsList[i]["description"],
@@ -97,7 +94,7 @@ class GetStartedPage extends GetView<FunctionsController> {
                     margin:
                         const EdgeInsets.symmetric(horizontal: 20, vertical: 0),
                     child: DelayedDisplay(
-                      delay: delayHelper.getDelayDuration(),
+                      delay: getDelayDuration(),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
