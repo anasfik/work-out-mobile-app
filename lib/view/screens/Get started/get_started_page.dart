@@ -11,6 +11,7 @@ import '../../../config/show_delay_mixin.dart';
 import '../../components/general componenets/mainScreenTitle.dart';
 import '../../components/general componenets/titleWithDescription.dart';
 import 'componenets/GetStartedCard.dart';
+import 'componenets/get_started_cards_scroll_view.dart';
 
 class GetStartedPage extends GetView<FunctionsController>
     with DelayHelperMixin {
@@ -64,27 +65,8 @@ class GetStartedPage extends GetView<FunctionsController>
                             secondary: Colors.transparent,
                           ),
                     ),
-                    child: SingleChildScrollView(
-                      physics: const ClampingScrollPhysics(),
-                      scrollDirection: Axis.horizontal,
-                      child: Container(
-                        padding: const EdgeInsets.only(left: 20),
-                        child: Wrap(
-                          direction: Axis.horizontal,
-                          children: [
-                            ...List.generate(
-                              cardsList.length,
-                              (i) => DelayedDisplay(
-                                delay: getDelayDuration(),
-                                child: GetStartedCard(
-                                  text: cardsList[i]["title"],
-                                  description: cardsList[i]["description"],
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
+                    child: GetStartedCardsScrollView(
+                      delay: getDelayDuration(),
                     ),
                   ),
                   const SizedBox(
@@ -114,7 +96,7 @@ class GetStartedPage extends GetView<FunctionsController>
                                 Align(
                                   alignment: Alignment.center,
                                   child: Text(
-                                    "2 / ${cardsList.length}",
+                                    "2 / ${handledCardsList.length}",
                                     style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       color: AppColors.green,
