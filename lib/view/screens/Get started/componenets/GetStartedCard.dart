@@ -8,25 +8,22 @@ import '../../../../helpers/string_methods.dart';
 import '../../../components/general componenets/CheckMark.dart';
 import 'IamTitle.dart';
 
-class GetStartedCard extends GetWidget<GetStartedController> {
-  const GetStartedCard(
-      {super.key,
-      required this.text,
-      required this.description,
-      required this.id});
+class GetStartedCard extends GetView<GetStartedController> {
+  const GetStartedCard({
+    super.key,
+    required this.text,
+    required this.description,
+    required this.id,
+  });
 
   final String text, description;
   final int id;
   @override
   Widget build(BuildContext context) {
     return GetBuilder<GetStartedController>(
-      initState: (state) {
-        controller.id = id;
-        print(controller.id);
-      },
+      init: GetStartedController(),
+  
       global: false,
-      id: id,
-      // init: GetStartedController(),
       builder: (controller) {
         return GestureDetector(
           onPanDown: (details) {

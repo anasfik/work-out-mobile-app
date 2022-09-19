@@ -1,12 +1,9 @@
 import 'package:get/get.dart';
 
 class GetStartedController extends GetxController {
-
-  
 // Variables
   bool isTappedDown = false;
   bool isChecked = false;
-  late int id;
   bool? previousIsChecked;
   void panDownMethod() {
     isTappedDown = true;
@@ -23,9 +20,8 @@ class GetStartedController extends GetxController {
 
     isChecked = !isChecked;
     update(
-      [id],
+      null,
       previousIsChecked != isChecked,
     );
   }
-
 }
