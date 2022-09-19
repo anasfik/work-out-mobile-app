@@ -8,6 +8,7 @@ import 'package:work_out/config/text.dart';
 import '../../../controller/authControllers/loginController.dart';
 import '../../../controller/functionsController.dart';
 import '../../../config/Colors.dart';
+import '../../../helpers/string_methods.dart';
 import '../../components/general componenets/button.dart';
 import '../../components/general componenets/mainScreenTitle.dart';
 import '../../components/general componenets/text field.dart';
@@ -62,7 +63,7 @@ class LoginPage extends StatelessWidget {
                     children: [
                       const Spacer(),
                       DelayedDisplay(
-                        delay: Duration(milliseconds: controller.delay),
+                        delay: Duration(milliseconds: delay),
                         child: MainScreenTitle(
                             mainWord: AppTexts.firstMainWord,
                             secondaryWord: AppTexts.secondaryMainWord),

@@ -7,6 +7,7 @@ import 'package:work_out/config/text.dart';
 import 'package:work_out/view/components/general%20componenets/button.dart';
 
 import '../../../controller/authControllers/emailVerficationController.dart';
+import '../../../helpers/string_methods.dart';
 
 class EmailVerificatioPage extends StatelessWidget {
   EmailVerificatioPage({Key? key}) : super(key: key);

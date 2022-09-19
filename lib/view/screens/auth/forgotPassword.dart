@@ -6,6 +6,7 @@ import 'package:work_out/config/images%20sources.dart';
 import 'package:work_out/config/text.dart';
 import '../../../controller/authControllers/forgotPasswordController.dart';
 import '../../../controller/functionsController.dart';
+import '../../../helpers/string_methods.dart';
 import '../../components/general componenets/button.dart';
 import '../../components/general componenets/text field.dart';
 import '../../components/general componenets/titleWithDescription.dart';
@@ -47,7 +48,7 @@ class ForgotPasswordPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   DelayedDisplay(
-                    delay: Duration(milliseconds: controller.delay + 100),
+                    delay: Duration(milliseconds: delay + 100),
                     child: TitleWithDescription(
                       title: capitalize(AppTexts.forgot),
                       description: capitalize(
@@ -56,7 +57,7 @@ class ForgotPasswordPage extends StatelessWidget {
                   ),
                   const SizedBox(height: 10),
                   DelayedDisplay(
-                    delay: Duration(milliseconds: controller.delay + 200),
+                    delay: Duration(milliseconds: delay + 200),
                     child: CustomTextField(
                       controller:
                           forgotPasswordController.emailToRecoverPassword,
@@ -66,7 +67,7 @@ class ForgotPasswordPage extends StatelessWidget {
                   ),
                   const SizedBox(height: 50),
                   DelayedDisplay(
-                    delay: Duration(milliseconds: controller.delay + 300),
+                    delay: Duration(milliseconds: delay + 300),
                     child: CustomButton(
                       onPressed: () {
                         forgotPasswordController.recoverPassword(

@@ -8,6 +8,7 @@ import 'package:work_out/view/screens/auth/loginPage.dart';
 import '../../../controller/functionsController.dart';
 import '../../../config/images sources.dart';
 import '../../../config/show_delay_mixin.dart';
+import '../../../helpers/string_methods.dart';
 import '../../components/general componenets/button.dart';
 import '../../components/general componenets/mainScreenTitle.dart';
 import '../../components/general componenets/screen_background_image.dart';
@@ -129,8 +130,7 @@ class SignUpPage extends StatelessWidget {
                                     : Get.back();
                               },
                               child: Text(
-                                controller
-                                    .capitalize(AppTexts.alreadyHaveAnAccount),
+                                capitalize(AppTexts.alreadyHaveAnAccount),
                                 style: TextStyle(
                                   fontSize: 14,
                                   color: Theme.of(context).primaryColor,
