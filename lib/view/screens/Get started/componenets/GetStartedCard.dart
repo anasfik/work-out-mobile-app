@@ -3,77 +3,46 @@ import 'package:get/get.dart';
 import 'package:work_out/controller/functionsController.dart';
 import 'package:work_out/config/Colors.dart';
 
-import '../../../../controller/getStartedController/cardsList.dart';
+import '../../../../controller/get_started_controller/get_started_controller.dart';
 import '../../../components/general componenets/CheckMark.dart';
 import 'IamTitle.dart';
 
-class GetStartedCard extends StatelessWidget {
+class GetStartedCard extends GetWidget<GetStartedController> {
   GetStartedCard({
-    Key? key,
+    super.key,
     required this.text,
-    this.isChecked = false,
     required this.description,
-  }) : super(key: key);
-  final FunctionsController controller = Get.put(FunctionsController());
-  final GetStartedController elementsListsDatacontroller =
-      Get.put(GetStartedController());
-  bool isChecked, isTappedDown = false;
+    this.isChecked = false,
+  });
+
   final String text, description;
-  Color cardBorderColor = Colors.transparent;
-  double opacity = 1;
+  bool isChecked;
 
   @override
   Widget build(BuildContext context) {
     return GetBuilder<GetStartedController>(
+      global: false,
       init: GetStartedController(),
-      builder: (elementsListsDatacontroller) {
-        return InkWell(
-          onTapCancel: () {
-            isTappedDown = isChecked = true;
-            cardBorderColor = Colors.transparent;
-
-            elementsListsDatacontroller.update();
+      builder: (controller) {
+        return GestureDetector(
+          onPanDown: (details) {
+            controller.panDownMethod();
           },
-          onTapDown: (details) {
-            cardBorderColor = isTappedDown ? Colors.transparent : Colors.green;
-            isTappedDown = true;
-            opacity = isTappedDown ? 0.5 : 1;
-            elementsListsDatacontroller.update();
+          onPanEnd: (details) {
+            controller.panEndCancel();
           },
-          onTapUp: (details) {
-            isTappedDown = !isTappedDown;
-            opacity = 0.45;
-            cardBorderColor = Colors.transparent;
-            elementsListsDatacontroller.update();
-          },
-          onHighlightChanged: (val) {
-            opacity = isChecked
-                ? isTappedDown
-                    ? 0
-                    : 0.4
-                : 1;
-
-            elementsListsDatacontroller.update();
+          onPanCancel: () {
+            controller.panEndCancel();
           },
           onTap: () {
             isChecked = !isChecked;
-            isTappedDown = isChecked;
-            isChecked
-                ? elementsListsDatacontroller.checkedGetStartedCardsList
-                    .add(text)
-                : elementsListsDatacontroller.checkedGetStartedCardsList
-                    .remove(text);
 
-            elementsListsDatacontroller.update();
+            controller.update();
           },
           child: Container(
             margin: const EdgeInsets.only(right: 20),
             padding: const EdgeInsets.symmetric(horizontal: 20),
             decoration: BoxDecoration(
-              border: Border.all(
-                width: 1,
-                color: cardBorderColor,
-              ),
               color: AppColors.darkBlue,
               borderRadius: BorderRadius.circular(10),
             ),
@@ -85,15 +54,15 @@ class GetStartedCard extends StatelessWidget {
                 Align(
                   alignment: Alignment.centerRight,
                   child: CheckMark(
-                    isTappedDown: isTappedDown,
-                    opacity: opacity,
+                    isTappedDown: controller.isTappedDown,
+                    opacity: 1,
                     isChecked: isChecked,
                   ),
                 ),
                 Align(
                   alignment: Alignment.centerLeft,
                   child: IamTitle(
-                    text: controller.capitalize(text),
+                    text: Get.find<FunctionsController>().capitalize(text),
                   ),
                 ),
                 const SizedBox(

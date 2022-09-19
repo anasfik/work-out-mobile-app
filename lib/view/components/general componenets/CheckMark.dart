@@ -12,7 +12,7 @@ class CheckMark extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Opacity(
-      opacity: opacity,
+      opacity: isTappedDown ? 0.5 : 1,
       child: AnimatedScale(
         duration: const Duration(milliseconds: 100),
         scale: isChecked || isTappedDown ? 1 : 0,

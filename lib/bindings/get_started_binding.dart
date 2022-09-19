@@ -1,8 +1,10 @@
 import 'package:get/get.dart';
 
+import '../controller/get_started_controller/get_started_controller.dart';
+
 class GetStartedBinding implements Bindings {
-@override
-void dependencies() {
-  
+  @override
+  void dependencies() {
+    Get.put<GetStartedController>(GetStartedController());
   }
 }

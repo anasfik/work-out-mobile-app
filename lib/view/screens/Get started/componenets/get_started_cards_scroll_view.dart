@@ -1,10 +1,12 @@
 import 'package:delayed_display/delayed_display.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:work_out/controller/get_started_controller/get_started_controller.dart';
 import 'package:work_out/view/screens/Get%20started/componenets/GetStartedCard.dart';
 
 import '../../../../config/getStarted/getStartedData.dart';
 
-class GetStartedCardsScrollView extends StatelessWidget {
+class GetStartedCardsScrollView extends GetView<GetStartedController> {
   const GetStartedCardsScrollView({
     super.key,
     required this.delay,
