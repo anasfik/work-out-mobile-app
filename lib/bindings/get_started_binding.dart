@@ -7,6 +7,5 @@ class GetStartedBinding implements Bindings {
   @override
   void dependencies() {
     Get.lazyPut<GetStartedController>(() => GetStartedController());
-    Get.lazyPut<GetStartedCardController>(() => GetStartedCardController());
   }
 }

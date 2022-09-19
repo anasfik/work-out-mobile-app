@@ -21,7 +21,7 @@ class GetStartedCard extends GetView<GetStartedCardController> {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<GetStartedCardController>(
-      init: GetStartedCardController(),
+      init: GetStartedCardController(id),
   
       global: false,
       builder: (controller) {

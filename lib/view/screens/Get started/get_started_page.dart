@@ -50,8 +50,7 @@ class GetStartedPage extends GetView<GetStartedController>
                     child: DelayedDisplay(
                       delay: getDelayDuration(),
                       child: TitleWithDescription(
-                        title: 
-                            capitalize(AppTexts.aboutYou),
+                        title: capitalize(AppTexts.aboutYou),
                         description: AppTexts.getStartedDescription,
                       ),
                     ),
@@ -95,16 +94,19 @@ class GetStartedPage extends GetView<GetStartedController>
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
                                 Align(
-                                  alignment: Alignment.center,
-                                  child: Text(
-                                    "${controller.checkedCardsLength} / ${handledCardsList.length}",
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      color: AppColors.green,
-                                      fontSize: 12,
-                                    ),
-                                  ),
-                                ),
+                                    alignment: Alignment.center,
+                                    child: GetBuilder<GetStartedController>(
+                                      builder: (controller) {
+                                        return Text(
+                                          "${controller.checkedCardsIds.length} / ${handledCardsList.length}",
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            color: AppColors.green,
+                                            fontSize: 12,
+                                          ),
+                                        );
+                                      },
+                                    )),
                                 const SizedBox(width: 15),
                                 ElevatedButton(
                                   style: ElevatedButton.styleFrom(
