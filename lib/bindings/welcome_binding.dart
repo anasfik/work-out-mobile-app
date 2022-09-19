@@ -6,6 +6,6 @@ class WelcomePageBindings implements Bindings {
   @override
   void dependencies() {
     // Dependency injection
-    Get.put<FunctionsController>(FunctionsController());
+    // Get.put<FunctionsController>(FunctionsController());
   }
 }

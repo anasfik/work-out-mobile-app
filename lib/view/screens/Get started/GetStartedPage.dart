@@ -13,11 +13,8 @@ import '../../components/general componenets/mainScreenTitle.dart';
 import '../../components/general componenets/titleWithDescription.dart';
 import 'componenets/GetStartedCard.dart';
 
-class GetStartedPage extends StatelessWidget {
+class GetStartedPage extends GetView<FunctionsController> {
   GetStartedPage({Key? key}) : super(key: key);
-
-  // Dependency injection
-  final FunctionsController controller = Get.put(FunctionsController());
 
   //
   final delayHelper = DelayHelper();
