@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 class GetStartedController extends GetxController {
 // Variables
   bool isTappedDown = false;
+  bool isChecked = false;
 
   void panDownMethod() {
     isTappedDown = true;
@@ -12,6 +13,11 @@ class GetStartedController extends GetxController {
 
   void panEndCancel() {
     isTappedDown = false;
+    update();
+  }
+
+  void toggleIsChecked() {
+    isChecked = !isChecked;
     update();
   }
 }

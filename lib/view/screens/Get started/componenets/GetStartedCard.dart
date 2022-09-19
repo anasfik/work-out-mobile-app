@@ -35,9 +35,7 @@ class GetStartedCard extends GetWidget<GetStartedController> {
             controller.panEndCancel();
           },
           onTap: () {
-            isChecked = !isChecked;
-
-            controller.update();
+            controller.toggleIsChecked();
           },
           child: Container(
             margin: const EdgeInsets.only(right: 20),
@@ -56,7 +54,7 @@ class GetStartedCard extends GetWidget<GetStartedController> {
                   child: CheckMark(
                     isTappedDown: controller.isTappedDown,
                     opacity: 1,
-                    isChecked: isChecked,
+                    isChecked: controller.isChecked,
                   ),
                 ),
                 Align(
