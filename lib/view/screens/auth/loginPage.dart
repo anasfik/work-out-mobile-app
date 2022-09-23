@@ -13,7 +13,7 @@ import '../../components/general componenets/button.dart';
 import '../../components/general componenets/mainScreenTitle.dart';
 import '../../components/general componenets/text field.dart';
 import '../../components/general componenets/titleWithDescription.dart';
-import 'SignUpPage.dart';
+import 'sign_up_page.dart';
 import 'forgotPassword.dart';
 
 class LoginPage extends StatelessWidget {

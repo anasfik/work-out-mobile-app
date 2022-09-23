@@ -1,8 +1,10 @@
 import 'package:get/get.dart';
+import 'package:work_out/view/screens/auth/sign_up_page.dart';
 import 'package:work_out/view/screens/welcome/welcome_page.dart';
 
 import '../bindings/get_started_binding.dart';
 import '../bindings/login_binding.dart';
+import '../bindings/sign_up_binding.dart';
 import '../bindings/welcome_binding.dart';
 import '../view/screens/Get started/get_started_page.dart';
 import '../view/screens/auth/loginPage.dart';
@@ -19,6 +21,11 @@ class Routes {
       name: "/get_started",
       page: () => GetStartedPage(),
       binding: GetStartedBinding(),
+    ),
+       GetPage(
+      name: "/signUp",
+      page: () => SignUpPage(),
+      binding: SignUpBinding(),
     ),
         GetPage(
       name: "/login",

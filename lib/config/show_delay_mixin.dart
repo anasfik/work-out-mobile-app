@@ -1,3 +1,4 @@
+// after migrating all with the mixin, this will be deleted
 class DelayHelper {
   DelayHelper({
     this.initialDelay = 300,
@@ -12,7 +13,6 @@ class DelayHelper {
   }
 }
 
-
 mixin DelayHelperMixin {
   final int initialDelay = 300, differenceBetweenDelays = 100;
   int order = 0;
@@ -21,6 +21,4 @@ mixin DelayHelperMixin {
       milliseconds: initialDelay + (differenceBetweenDelays * order++),
     );
   }
-
-  
 }

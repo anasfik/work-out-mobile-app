@@ -5,8 +5,6 @@ import 'package:work_out/controller/authControllers/SignUpController.dart';
 import 'package:work_out/config/Colors.dart';
 import 'package:work_out/config/text.dart';
 import 'package:work_out/view/screens/auth/loginPage.dart';
-import '../../../controller/functionsController.dart';
-import '../../../config/images sources.dart';
 import '../../../config/show_delay_mixin.dart';
 import '../../../helpers/string_methods.dart';
 import '../../components/general componenets/button.dart';
@@ -15,21 +13,15 @@ import '../../components/general componenets/screen_background_image.dart';
 import '../../components/general componenets/text field.dart';
 import '../../components/general componenets/titleWithDescription.dart';
 
-class SignUpPage extends StatelessWidget {
-  SignUpPage({Key? key}) : super(key: key);
-  // Dependency injection
-  final FunctionsController controller = Get.put(FunctionsController());
-  final additional signUpController = Get.put(additional());
-  //
-  final DelayHelper delayHelper = DelayHelper();
+class SignUpPage extends GetView<SignUpController> with DelayHelperMixin {
+  SignUpPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
         children: [
-          BackgroundImage(
-            backgroundImage: ImgSrc().randomFromAssetsList(),
-          ),
+          const BackgroundImage(),
           Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
@@ -57,7 +49,7 @@ class SignUpPage extends StatelessWidget {
                     children: [
                       const Spacer(),
                       DelayedDisplay(
-                        delay: delayHelper.getDelayDuration(),
+                        delay: getDelayDuration(),
                         child: MainScreenTitle(
                             mainWord: AppTexts.firstMainWord,
                             secondaryWord: AppTexts.secondaryMainWord),
@@ -66,33 +58,33 @@ class SignUpPage extends StatelessWidget {
                         flex: 2,
                       ),
                       DelayedDisplay(
-                        delay: delayHelper.getDelayDuration(),
+                        delay: getDelayDuration(),
                         child: TitleWithDescription(
                           title: capitalize(AppTexts.signUp),
                           description: AppTexts.signUpDescription,
                         ),
                       ),
                       DelayedDisplay(
-                        delay: delayHelper.getDelayDuration(),
+                        delay: getDelayDuration(),
                         child: CustomTextField(
                           keyboardType: TextInputType.name,
-                          controller: signUpController.signUpUserController,
+                          controller: controller.signUpUserController,
                           label: capitalize(AppTexts.username),
                         ),
                       ),
                       DelayedDisplay(
-                        delay: delayHelper.getDelayDuration(),
+                        delay: getDelayDuration(),
                         child: CustomTextField(
                           keyboardType: TextInputType.emailAddress,
-                          controller: signUpController.signUpEmailController,
+                          controller: controller.signUpEmailController,
                           label: capitalize(AppTexts.email),
                         ),
                       ),
                       DelayedDisplay(
-                        delay: delayHelper.getDelayDuration(),
+                        delay: getDelayDuration(),
                         child: CustomTextField(
                           keyboardType: TextInputType.text,
-                          controller: signUpController.signUpPasswordController,
+                          controller: controller.signUpPasswordController,
                           label: capitalize(AppTexts.password),
                           obscureText: true,
                         ),
@@ -101,16 +93,14 @@ class SignUpPage extends StatelessWidget {
                       Column(
                         children: [
                           DelayedDisplay(
-                            delay: delayHelper.getDelayDuration(),
+                            delay: getDelayDuration(),
                             child: CustomButton(
                               onPressed: () {
-                                signUpController.newAccount(
-                                  signUpController.signUpEmailController.text
+                                controller.newAccount(
+                                  controller.signUpEmailController.text.trim(),
+                                  controller.signUpPasswordController.text
                                       .trim(),
-                                  signUpController.signUpPasswordController.text
-                                      .trim(),
-                                  signUpController.signUpUserController.text
-                                      .trim(),
+                                  controller.signUpUserController.text.trim(),
                                 );
                               },
                               isRounded: false,
@@ -122,7 +112,7 @@ class SignUpPage extends StatelessWidget {
                             height: 20,
                           ),
                           DelayedDisplay(
-                            delay: delayHelper.getDelayDuration(),
+                            delay: getDelayDuration(),
                             child: GestureDetector(
                               onTap: () {
                                 Get.previousRoute == "/GetStartedPage"

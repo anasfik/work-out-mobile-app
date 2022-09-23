@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:work_out/config/Colors.dart';
 import 'package:work_out/config/text.dart';
 import 'package:work_out/view/components/general%20componenets/screen_background_image.dart';
-import 'package:work_out/view/screens/auth/SignUpPage.dart';
+import 'package:work_out/view/screens/auth/sign_up_page.dart';
 import '../../../config/getStarted/getStartedData.dart';
 import '../../../config/show_delay_mixin.dart';
 import '../../../controller/get_started_controller/get_started_controller.dart';
@@ -116,7 +116,7 @@ class GetStartedPage extends GetView<GetStartedController>
                                     primary: Theme.of(context).primaryColor,
                                   ),
                                   onPressed: () {
-                                    Get.to(SignUpPage());
+                                    Get.toNamed("/signUp");
                                   },
                                   child: Text(capitalize(AppTexts.next),
                                       style:

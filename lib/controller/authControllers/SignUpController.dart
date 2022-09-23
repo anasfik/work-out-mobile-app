@@ -8,7 +8,7 @@ import 'package:work_out/view/screens/auth/EmailVerification.dart';
 import '../../helpers/string_methods.dart';
 import '../functionsController/dialogsAndLoadingController.dart';
 
-class additional extends GetxController {
+class SignUpController extends GetxController {
   // Input controllers
   TextEditingController signUpUserController = TextEditingController();
   TextEditingController signUpEmailController = TextEditingController();
