@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:work_out/config/images%20sources.dart';
 import 'package:work_out/config/show_delay_mixin.dart';
 import 'package:work_out/config/text.dart';
+import 'package:work_out/view/widgets/general_widgets/screen_background_image.dart';
 
 import '../../../controller/authControllers/loginController.dart';
 import '../../../config/Colors.dart';
@@ -24,13 +25,7 @@ class LoginPage extends GetView<LoginController> with DelayHelperMixin {
     return Scaffold(
       body: Stack(
         children: [
-          SizedBox(
-            width: double.infinity,
-            child: Image.asset(
-              ImgSrc().randomFromAssetsList(),
-              fit: BoxFit.cover,
-            ),
-          ),
+          const BackgroundImage(),
           Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
