@@ -6,7 +6,7 @@ import 'package:work_out/config/Colors.dart';
 import '../../../../controller/get_started_controller/get_started_card_controller.dart';
 import '../../../../helpers/string_methods.dart';
 import '../../../components/general componenets/CheckMark.dart';
-import 'IamTitle.dart';
+import 'I_am_title.dart';
 
 class GetStartedCard extends GetView<GetStartedCardController> {
   const GetStartedCard({
