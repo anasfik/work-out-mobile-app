@@ -6,7 +6,6 @@ import 'package:work_out/config/show_delay_mixin.dart';
 import 'package:work_out/config/text.dart';
 
 import '../../../controller/authControllers/loginController.dart';
-import '../../../controller/functionsController.dart';
 import '../../../config/Colors.dart';
 import '../../../helpers/string_methods.dart';
 import '../../widgets/general_widgets/button.dart';
@@ -16,14 +15,10 @@ import '../../widgets/general_widgets/titleWithDescription.dart';
 import 'sign_up_page.dart';
 import 'forgotPassword.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends GetView<LoginController> with DelayHelperMixin {
   LoginPage({Key? key}) : super(key: key);
-  //depen. injection
-  final FunctionsController controller = Get.put(FunctionsController());
-  final LoginController loginController = Get.put(LoginController());
 
   //
-  final DelayHelper delayHelper = DelayHelper();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,7 +67,7 @@ class LoginPage extends StatelessWidget {
                         flex: 3,
                       ),
                       DelayedDisplay(
-                        delay: delayHelper.getDelayDuration(),
+                        delay: getDelayDuration(),
                         child: TitleWithDescription(
                           title: capitalize(AppTexts.signIn),
                           description: AppTexts.loginDescription,
@@ -82,18 +77,18 @@ class LoginPage extends StatelessWidget {
                         height: 10,
                       ),
                       DelayedDisplay(
-                        delay: delayHelper.getDelayDuration(),
+                        delay: getDelayDuration(),
                         child: CustomTextField(
                           keyboardType: TextInputType.emailAddress,
-                          controller: loginController.loginEmailController,
+                          controller: controller.loginEmailController,
                           label: capitalize(AppTexts.email),
                         ),
                       ),
                       DelayedDisplay(
-                        delay: delayHelper.getDelayDuration(),
+                        delay: getDelayDuration(),
                         child: CustomTextField(
                           keyboardType: TextInputType.visiblePassword,
-                          controller: loginController.loginPasswordController,
+                          controller: controller.loginPasswordController,
                           label: capitalize(AppTexts.password),
                           obscureText: true,
                         ),
@@ -103,7 +98,7 @@ class LoginPage extends StatelessWidget {
                         child: Padding(
                           padding: const EdgeInsets.only(top: 15),
                           child: DelayedDisplay(
-                            delay: delayHelper.getDelayDuration(),
+                            delay: getDelayDuration(),
                             child: GestureDetector(
                               onTap: () {
                                 Get.to(() => ForgotPasswordPage());
@@ -126,13 +121,12 @@ class LoginPage extends StatelessWidget {
                       Column(
                         children: [
                           DelayedDisplay(
-                            delay: delayHelper.getDelayDuration(),
+                            delay: getDelayDuration(),
                             child: CustomButton(
                               onPressed: () {
-                                loginController.loginWithAccount(
-                                  loginController.loginEmailController.text
-                                      .trim(),
-                                  loginController.loginPasswordController.text
+                                controller.loginWithAccount(
+                                  controller.loginEmailController.text.trim(),
+                                  controller.loginPasswordController.text
                                       .trim(),
                                 );
                               },
@@ -145,7 +139,7 @@ class LoginPage extends StatelessWidget {
                             height: 10,
                           ),
                           DelayedDisplay(
-                            delay: delayHelper.getDelayDuration(),
+                            delay: getDelayDuration(),
                             child: CustomButton(
                               onPressed: () {
                                 Get.to(() => SignUpPage());
