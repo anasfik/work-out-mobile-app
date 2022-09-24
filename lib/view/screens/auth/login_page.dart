@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:work_out/config/show_delay_mixin.dart';
 import 'package:work_out/config/text.dart';
+import 'package:work_out/controller/authControllers/login_controller/extensions/login.dart';
 import 'package:work_out/view/widgets/general_widgets/screen_background_image.dart';
 
-import '../../../controller/authControllers/loginController.dart';
+import '../../../controller/authControllers/login_controller/login_controller.dart';
 import '../../../config/Colors.dart';
 import '../../../helpers/string_methods.dart';
 import '../../widgets/general_widgets/button.dart';
@@ -117,8 +118,10 @@ class LoginPage extends GetView<LoginController> with DelayHelperMixin {
                             child: CustomButton(
                               onPressed: () {
                                 controller.loginWithAccount(
-                                  controller.loginEmailController.text.trim(),
-                                  controller.loginPasswordController.text
+                                  email: controller.loginEmailController.text
+                                      .trim(),
+                                  password: controller
+                                      .loginPasswordController.text
                                       .trim(),
                                 );
                               },
