@@ -1,7 +1,6 @@
 import 'package:delayed_display/delayed_display.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:work_out/config/images%20sources.dart';
 import 'package:work_out/config/show_delay_mixin.dart';
 import 'package:work_out/config/text.dart';
 import 'package:work_out/view/widgets/general_widgets/screen_background_image.dart';
@@ -17,14 +16,12 @@ import 'sign_up_page.dart';
 import 'forgotPassword.dart';
 
 class LoginPage extends GetView<LoginController> with DelayHelperMixin {
-  LoginPage({Key? key}) : super(key: key);
-
-  //
+  LoginPage({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
-        children: [
+        children: <Widget>[
           const BackgroundImage(),
           Container(
             decoration: BoxDecoration(
