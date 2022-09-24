@@ -4,14 +4,14 @@ import 'package:get/get.dart';
 import 'package:work_out/config/Colors.dart';
 import 'package:work_out/config/images%20sources.dart';
 import 'package:work_out/config/text.dart';
-import 'package:work_out/view/components/general%20componenets/titleWithDescription.dart';
+import 'package:work_out/view/widgets/general_widgets/titleWithDescription.dart';
 import 'package:work_out/view/screens/toggle%20laungage/chooseLaungagePage.dart';
 import '../../../controller/functionsController.dart';
 import '../../../config/show_delay_mixin.dart';
 import '../../../helpers/string_methods.dart';
-import '../../components/general componenets/button.dart';
-import '../../components/general componenets/mainScreenTitle.dart';
-import '../../components/general componenets/screen_background_image.dart';
+import '../../widgets/general_widgets/button.dart';
+import '../../widgets/general_widgets/mainScreenTitle.dart';
+import '../../widgets/general_widgets/screen_background_image.dart';
 
 class WelcomePage extends GetView<FunctionsController> with DelayHelperMixin {
   WelcomePage({Key? key}) : super(key: key);

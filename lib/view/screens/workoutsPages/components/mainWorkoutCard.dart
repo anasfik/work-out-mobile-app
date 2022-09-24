@@ -5,7 +5,7 @@ import 'package:work_out/view/screens/homepage/componenets/playButton.dart';
 import 'package:work_out/view/screens/work%20out%20details/componenets/RatingStars.dart';
 
 import '../../../../helpers/string_methods.dart';
-import '../../../components/general componenets/actionButton.dart';
+import '../../../widgets/general_widgets/actionButton.dart';
 import '../../work out details/workOutDetails.dart';
 
 class MainWorkoutCard extends StatelessWidget {

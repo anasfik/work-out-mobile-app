@@ -3,14 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:work_out/config/Colors.dart';
 import 'package:work_out/config/text.dart';
-import 'package:work_out/view/components/general%20componenets/screen_background_image.dart';
-import 'package:work_out/view/screens/auth/sign_up_page.dart';
+import 'package:work_out/view/widgets/general_widgets/screen_background_image.dart';
 import '../../../config/getStarted/getStartedData.dart';
 import '../../../config/show_delay_mixin.dart';
 import '../../../controller/get_started_controller/get_started_controller.dart';
 import '../../../helpers/string_methods.dart';
-import '../../components/general componenets/mainScreenTitle.dart';
-import '../../components/general componenets/titleWithDescription.dart';
+import '../../widgets/general_widgets/mainScreenTitle.dart';
+import '../../widgets/general_widgets/titleWithDescription.dart';
 import 'componenets/get_started_cards_scroll_view.dart';
 
 class GetStartedPage extends GetView<GetStartedController>

@@ -11,7 +11,7 @@ import '../../../controller/tabs controllers/workOutTabController.dart';
 import '../../../controller/userController/userController.dart';
 import '../../../config/images sources.dart';
 import '../../../helpers/string_methods.dart';
-import '../../components/general componenets/screen_background_image.dart';
+import '../../widgets/general_widgets/screen_background_image.dart';
 import 'componenets/HomePageSearchBar.dart';
 import 'componenets/ItemsSwitchTiles.dart';
 import 'componenets/find_your_workout.dart';

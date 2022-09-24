@@ -9,9 +9,9 @@ import '../../../config/Colors.dart';
 import '../../../config/text.dart';
 
 import '../../../helpers/string_methods.dart';
-import '../../components/general componenets/actionButton.dart';
+import '../../widgets/general_widgets/actionButton.dart';
 import 'componenets/RatingStars.dart';
-import '../../components/general componenets/button.dart';
+import '../../widgets/general_widgets/button.dart';
 
 class WorkOutDetails extends StatelessWidget {
   WorkOutDetails({

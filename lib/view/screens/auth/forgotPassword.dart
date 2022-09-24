@@ -7,9 +7,9 @@ import 'package:work_out/config/text.dart';
 import '../../../controller/authControllers/forgotPasswordController.dart';
 import '../../../controller/functionsController.dart';
 import '../../../helpers/string_methods.dart';
-import '../../components/general componenets/button.dart';
-import '../../components/general componenets/text field.dart';
-import '../../components/general componenets/titleWithDescription.dart';
+import '../../widgets/general_widgets/button.dart';
+import '../../widgets/general_widgets/text field.dart';
+import '../../widgets/general_widgets/titleWithDescription.dart';
 
 class ForgotPasswordPage extends StatelessWidget {
   ForgotPasswordPage({Key? key}) : super(key: key);

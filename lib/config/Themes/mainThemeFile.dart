@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../view/components/general componenets/customMaterialColor.dart';
+import '../../view/widgets/general_widgets/customMaterialColor.dart';
 import '../Colors.dart';
 import 'inputDecoration.dart';
 

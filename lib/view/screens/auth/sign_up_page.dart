@@ -8,11 +8,11 @@ import 'package:work_out/config/Colors.dart';
 import 'package:work_out/config/text.dart';
 import '../../../config/show_delay_mixin.dart';
 import '../../../helpers/string_methods.dart';
-import '../../components/general componenets/button.dart';
-import '../../components/general componenets/mainScreenTitle.dart';
-import '../../components/general componenets/screen_background_image.dart';
-import '../../components/general componenets/text field.dart';
-import '../../components/general componenets/titleWithDescription.dart';
+import '../../widgets/general_widgets/button.dart';
+import '../../widgets/general_widgets/mainScreenTitle.dart';
+import '../../widgets/general_widgets/screen_background_image.dart';
+import '../../widgets/general_widgets/text field.dart';
+import '../../widgets/general_widgets/titleWithDescription.dart';
 
 class SignUpPage extends GetView<SignUpController> with DelayHelperMixin {
   SignUpPage({super.key});

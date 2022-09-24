@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:work_out/controller/functionsController.dart';
 import 'package:work_out/config/Colors.dart';
 import 'package:work_out/config/text.dart';
-import 'package:work_out/view/components/general%20componenets/button.dart';
+import 'package:work_out/view/widgets/general_widgets/button.dart';
 import '../../../controller/authControllers/signOutController.dart';
 import '../../../controller/userController/userController.dart';
 import '../../../config/UserProfile/userProfil.dart';

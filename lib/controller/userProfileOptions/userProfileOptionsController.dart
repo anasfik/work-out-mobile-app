@@ -3,8 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:work_out/controller/functionsController.dart';
-import 'package:work_out/view/components/general%20componenets/button.dart';
-import 'package:work_out/view/components/general%20componenets/text%20field.dart';
+import 'package:work_out/view/widgets/general_widgets/button.dart';
+import 'package:work_out/view/widgets/general_widgets/text%20field.dart';
 
 import '../../helpers/string_methods.dart';
 import '../functionsController/dialogsAndLoadingController.dart';
