@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:work_out/config/show_delay_mixin.dart';
 import 'package:work_out/config/text.dart';
-import 'package:work_out/controller/authControllers/login_controller/extensions/login.dart';
+import 'package:work_out/controller/authControllers/login_controller/extensions/login_with_account.dart';
 import 'package:work_out/view/widgets/general_widgets/screen_background_image.dart';
 
 import '../../../controller/authControllers/login_controller/login_controller.dart';
@@ -94,7 +94,7 @@ class LoginPage extends GetView<LoginController> with DelayHelperMixin {
                             delay: getDelayDuration(),
                             child: GestureDetector(
                               onTap: () {
-                                Get.to(() => ForgotPasswordPage());
+                                Get.toNamed("/forgotPassword");
                               },
                               child: Text(
                                 capitalize(

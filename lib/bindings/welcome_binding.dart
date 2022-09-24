@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 
 
-class WelcomePageBindings implements Bindings {
+class WelcomePageBinding implements Bindings {
   @override
   void dependencies() {
     // Dependency injection
