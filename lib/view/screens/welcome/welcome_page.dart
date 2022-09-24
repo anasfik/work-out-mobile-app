@@ -66,7 +66,7 @@ class WelcomePage extends GetView<FunctionsController> with DelayHelperMixin {
                         delay: getDelayDuration(),
                         child: CustomButton(
                           onPressed: () {
-                            Get.toNamed("/get_started");
+                            Get.toNamed("/getStarted");
                           },
                           text: capitalize(AppTexts.getStarted),
                           isOutlined: false,

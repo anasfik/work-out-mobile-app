@@ -42,6 +42,8 @@ class GetStartedCardController extends GetxController {
       previousIsChecked != isChecked,
     );
   }
+
+  
 }
 
 

@@ -5,6 +5,7 @@ import '../sign_up_controller.dart';
 
 extension HandleGoingToLoginPageExtension on SignUpController {
   void handleGoingToLoginPage() {
-    Get.previousRoute == "/GetStartedPage" ? Get.to(LoginPage()) : Get.back();
+    print(Get.previousRoute);
+    Get.previousRoute == "/getStarted" ? Get.to(LoginPage()) : Get.back();
   }
 }

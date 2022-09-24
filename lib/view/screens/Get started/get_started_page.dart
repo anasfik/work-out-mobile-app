@@ -96,6 +96,7 @@ class GetStartedPage extends GetView<GetStartedController>
                                 Align(
                                     alignment: Alignment.center,
                                     child: GetBuilder<GetStartedController>(
+                                      id: controller.rebuildId,
                                       builder: (controller) {
                                         return Text(
                                           "${controller.checkedCardsIds.length} / ${handledCardsList.length}",
@@ -108,19 +109,30 @@ class GetStartedPage extends GetView<GetStartedController>
                                       },
                                     )),
                                 const SizedBox(width: 15),
-                                ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                    padding: const EdgeInsets.symmetric(
-                                      horizontal: 20,
-                                    ),
-                                    primary: Theme.of(context).primaryColor,
-                                  ),
-                                  onPressed: () {
-                                    Get.toNamed("/signUp");
+                                GetBuilder<GetStartedController>(
+                                  
+                                  id: controller.rebuildId,
+                                  builder: (controller) {
+                                    return ElevatedButton(
+                                      style: ElevatedButton.styleFrom(
+                                        padding: const EdgeInsets.symmetric(
+                                          horizontal: 20,
+                                        ),
+                                        primary: Theme.of(context).primaryColor,
+                                      ),
+                                      onPressed: controller
+                                              .hasUserChooserAtLeastOneChoice
+                                          ? () {
+                                              Get.toNamed("/signUp");
+                                            }
+                                          : null,
+                                      child: Text(
+                                        capitalize(AppTexts.next),
+                                        style: const TextStyle(
+                                            color: Colors.white),
+                                      ),
+                                    );
                                   },
-                                  child: Text(capitalize(AppTexts.next),
-                                      style:
-                                          const TextStyle(color: Colors.white)),
                                 ),
                               ],
                             ),

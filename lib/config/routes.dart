@@ -17,17 +17,17 @@ class Routes {
       page: () => WelcomePage(),
       binding: WelcomePageBindings(),
     ),
-      GetPage(
-      name: "/get_started",
+    GetPage(
+      name: "/getStarted",
       page: () => GetStartedPage(),
       binding: GetStartedBinding(),
     ),
-       GetPage(
+    GetPage(
       name: "/signUp",
       page: () => SignUpPage(),
       binding: SignUpBinding(),
     ),
-        GetPage(
+    GetPage(
       name: "/login",
       page: () => LoginPage(),
       binding: LoginBinding(),
