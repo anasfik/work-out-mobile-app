@@ -10,7 +10,7 @@ import '../../../../../view/screens/auth/EmailVerification.dart';
 import '../../sign_up_controller.dart';
 
 extension CreateNewAccExtension on SignUpController {
-  /// create new account in firebase auth, then add the  extra information such as credentail, uid, time of creation, email verification status..
+  /// create new account in firebase auth, then add the  extra information such as credential, uid, time of creation, email verification status..
   Future<void> createNewAccount({
     required String email,
     required String password,
