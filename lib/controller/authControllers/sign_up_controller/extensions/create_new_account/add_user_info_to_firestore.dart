@@ -3,8 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:work_out/controller/authControllers/sign_up_controller/sign_up_controller.dart';
 
 extension AddExtraInfoExt on SignUpController {
-  // add additional info to the firestore
-  Future<void> _addUserInformationToFirestore({
+  /// This will add more info to the database about the use, note that you should not add the password, for the user privacy but you can add it if you want
+  Future<void> addUserInformationToFirestore({
     required UserCredential credential,
     required String email,
     required String username,
@@ -26,8 +26,4 @@ extension AddExtraInfoExt on SignUpController {
       "createdAt": thisMomentTime,
     });
   }
-
-  /// This will add more info to the database about the use, note that you should not add the password, for the user privacy but you can add it if you want
-
-  Function get addUserInformationToFirestore => _addUserInformationToFirestore;
 }
