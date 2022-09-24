@@ -2,10 +2,10 @@ import 'package:delayed_display/delayed_display.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:work_out/controller/authControllers/sign_up_controller/extensions/create_new_account/create_new_account.dart';
+import 'package:work_out/controller/authControllers/sign_up_controller/extensions/handle_going_to_login_page.dart';
 import 'package:work_out/controller/authControllers/sign_up_controller/sign_up_controller.dart';
 import 'package:work_out/config/Colors.dart';
 import 'package:work_out/config/text.dart';
-import 'package:work_out/view/screens/auth/loginPage.dart';
 import '../../../config/show_delay_mixin.dart';
 import '../../../helpers/string_methods.dart';
 import '../../components/general componenets/button.dart';
@@ -119,9 +119,7 @@ class SignUpPage extends GetView<SignUpController> with DelayHelperMixin {
                             delay: getDelayDuration(),
                             child: GestureDetector(
                               onTap: () {
-                                Get.previousRoute == "/GetStartedPage"
-                                    ? Get.to(LoginPage())
-                                    : Get.back();
+                                controller.handleGoingToLoginPage();
                               },
                               child: Text(
                                 capitalize(AppTexts.alreadyHaveAnAccount),

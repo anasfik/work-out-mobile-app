@@ -7,17 +7,16 @@ import '../../functionsController/dialogsAndLoadingController.dart';
 
 class SignUpController extends GetxController {
   final DialogsAndLoadingController dialogsAndLoadingController = Get.find();
+  // Get moment time (in this case, get more info about user)
+  FieldValue thisMomentTime = FieldValue.serverTimestamp();
+
+
+
 
   // Input controllers
   late TextEditingController signUpUserController,
       signUpEmailController,
       signUpPasswordController;
-
-  // user instance,
-  User? user = FirebaseAuth.instance.currentUser;
-
-  // Get moment time (in this case, get more info about user)
-  FieldValue thisMomentTime = FieldValue.serverTimestamp();
 
   @override
   void onInit() {
