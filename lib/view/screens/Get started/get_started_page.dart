@@ -110,7 +110,6 @@ class GetStartedPage extends GetView<GetStartedController>
                                     )),
                                 const SizedBox(width: 15),
                                 GetBuilder<GetStartedController>(
-                                  
                                   id: controller.rebuildId,
                                   builder: (controller) {
                                     return ElevatedButton(
@@ -129,7 +128,8 @@ class GetStartedPage extends GetView<GetStartedController>
                                       child: Text(
                                         capitalize(AppTexts.next),
                                         style: const TextStyle(
-                                            color: Colors.white),
+                                          color: Colors.white,
+                                        ),
                                       ),
                                     );
                                   },
